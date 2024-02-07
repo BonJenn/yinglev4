@@ -12,7 +12,7 @@ const Home = () => {
 
     return (
         <>
-        <Nav/>
+        <Nav minimal={false}/>
         <div className="home">
             <h1>The World's Most Sought-After Singles</h1>
             <button className ="primary-button" onClick={handleClick}>
