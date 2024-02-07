@@ -3,7 +3,7 @@ import Nav from '../components/Nav';
 
 const Home = () => {
 
-    const authToken = true
+    const authToken = false
 
     const handleClick = ()=> {
         console.log('clicked')

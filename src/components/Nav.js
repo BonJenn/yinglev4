@@ -13,7 +13,7 @@ const Nav = ({minimal, authToken}) => {
                 
             </div>
 
-            {!authToken && <button className="nav-button">Log in</button>}
+            {!authToken && !minimal && <button className="nav-button">Log in</button>}
         </nav>
     )
 }
