@@ -1,17 +1,19 @@
-import logo from '../images/yingle-logo-white.png'
+import whiteLogo from '../images/yingle-logo-white.png'
 import colorLogo from '../images/yingle-logo-color.png'
 
-const Nav = ({minimal}) => {
+const Nav = ({minimal, authToken}) => {
 
 
 
     return (
         <nav>
             <div className = "logo-container"> 
-                <img className="logo" src={minimal ? colorLogo : logo }/>
+                <img className="logo" src={minimal ? colorLogo : whiteLogo }/>
                 
                 
             </div>
+
+            {!authToken && <button className="nav-button">Log in</button>}
         </nav>
     )
 }
