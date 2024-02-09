@@ -44,7 +44,11 @@ nav .nav-button {
   border-radius: 10px;
   border: none;
   margin: 10px;
+} 
 
+nav .nav-button:disabled {
+  background-color: rgb(189, 180, 180);
+  color: rgb(193, 42, 90)
 }
 
 nav .logo-container {
@@ -69,4 +73,18 @@ nav .logo-container .logo {
     rgba(0, 0, 0, 0.65) 0%,
     rgba(0, 0, 0, 0) 100%
   )
+}
+
+
+/* -------- Auth Modal ------ */
+.auth-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 360px;
+  height: 600px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 40px;
 }

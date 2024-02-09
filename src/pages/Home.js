@@ -2,8 +2,6 @@ import Nav from '../components/Nav'
 import AuthModal from "../components/AuthModal"
 import { useState } from 'react'
 
-
-
 const Home = () => {
 
     const [ showModal, setShowModal ] = useState(false)
@@ -18,7 +16,7 @@ const Home = () => {
 
     return (
         <div className="overlay">
-            <Nav minimal={false} authToken={authToken}/>
+            <Nav minimal={false} authToken={authToken} setShowModal={ setShowModal } showModal={showModal}/>
             <div className="home">
                 <h1>The World's Most Sought-After Singles</h1>
                 <button className ="primary-button" onClick={handleClick}>
