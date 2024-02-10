@@ -4,6 +4,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 
 h2 {
@@ -12,6 +13,12 @@ h2 {
 
 * {
   font-family: 'Readex Pro', sans-serif;
+}
+
+.primary-title {
+  font-size: 90px;
+  color: rgb(255,255,255);
+
 }
 
 .primary-button {
@@ -45,9 +52,6 @@ h2 {
   border: solid 2px rgb(48,48,48);
 }
 
-body {
-  text-align: center;
-}
 
 /*------ Navbar -----*/
 
@@ -93,13 +97,19 @@ nav .logo-container .logo {
     to bottom,
     rgba(0, 0, 0, 0.65) 0%,
     rgba(0, 0, 0, 0) 100%
-  )
+  ), url(images/background.webp)
+}
+
+.home {
+  margin-top: 30vh;
 }
 
 
 /* -------- Auth Modal ------ */
 .auth-modal {
   position: fixed;
+  left: 0;
+  right: 0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

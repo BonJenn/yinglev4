@@ -1,10 +1,11 @@
 import whiteLogo from '../images/yingle-logo-white.png'
 import colorLogo from '../images/yingle-logo-color.png'
 
-const Nav = ({minimal, authToken, setShowModal, showModal }) => {
+const Nav = ({minimal, authToken, setShowModal, showModal, setIsSignUp }) => {
 
     const handleClick = () => {
         setShowModal(true)
+        setIsSignUp(false)
     }
 
 
