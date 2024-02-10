@@ -93,12 +93,16 @@ nav .logo-container .logo {
   width: 100vw;
   height: 100vh;
   position: fixed;
+  background-color: black;
+}
+  /*
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.65) 0%,
     rgba(0, 0, 0, 0) 100%
   ), url(images/background.webp)
 }
+*/
 
 .home {
   margin-top: 30vh;
@@ -136,3 +140,53 @@ nav .logo-container .logo {
   margin: 8px;
   font-size: 17px;
 }
+
+
+
+/* --- Onboarding Page ----- */
+
+.onboarding form {
+  display: flex;
+  justify-content: center;
+
+}
+
+.onboarding form section {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 35%;
+}
+.onboarding form input {
+  padding: 15px 30px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: solid 2px rgb(219,219,219);
+  border-radius: 10px
+}
+
+.onboarding form input::webkit-outer-spin-button,
+.onboarding form input::webkit-inner-spin-button, {
+  -webkit-appearance: none;
+  margin: 0;
+
+}
+
+.onboarding form .multiple-input-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.onboarding form .multiple-input-container input {
+  margin-right: 10px; 
+
+}
+
+.onboarding form .multiple-input-container label {
+  padding: 10px;
+  border: solid 2px rgb(144,144,144);
+  border-radius: 10px;
+  transition: all 0.3s;
+  margin-right: 10px;
+}
+
