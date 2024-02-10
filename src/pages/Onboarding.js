@@ -77,22 +77,22 @@ const Onboarding = () => {
                         <label>Gender</label>
                         <div className="multiple-input-container">
                         
-                            <label htmlFor="man_gender_identity">Man</label>
+                            <label htmlFor="man-gender-identity">Man</label>
                                 <input
-                                    id="man-gender-indentity"
+                                    id="man-gender-identity"
                                     type="radio"
-                                    name="gender_indentity"
+                                    name="gender_identity"
                                     value={"man"}
                                     onChange={handleChange}
                                     checked={false}
                                 />
 
                             
-                            <label htmlFor="man_gender_identity">Woman</label>
+                            <label htmlFor="woman-gender-identity">Woman</label>
                                 <input
-                                    id="woman-gender-indentity"
+                                    id="woman-gender-identity"
                                     type="radio"
-                                    name="gender_indentity"
+                                    name="gender_identity"
                                     value={"woman"}
                                     onChange={handleChange}
                                     checked={false}
@@ -104,7 +104,7 @@ const Onboarding = () => {
                         <label>Show Me</label>
                         <div className="multiple-input-container">
                             
-                            <label htmlFor="man_gender_interest">Man</label>
+                            <label htmlFor="man-gender-interest">Man</label>
                             <input
                                 id="man-gender-interest"
                                 type="radio"
@@ -116,14 +116,14 @@ const Onboarding = () => {
                         
 
                         
-                            <label htmlFor="woman_gender_interest">Woman</label>
+                            <label htmlFor="woman-gender-interest">Woman</label>
                             <input
-                                id="woman-gender-indentity"
+                                id="woman-gender-interest"
                                 type="radio"
                                 name="gender_interest"
                                 value={"woman"}
                                 onChange={handleChange}
-                                checked={false}
+                                checked={true}
                             />
 
                         </div>

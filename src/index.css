@@ -156,7 +156,9 @@ nav .logo-container .logo {
   flex-direction: column;
   padding: 20px;
   width: 35%;
+  text-align: start;
 }
+
 .onboarding form input {
   padding: 15px 30px;
   margin: 10px 0;
@@ -169,8 +171,13 @@ nav .logo-container .logo {
 .onboarding form input::webkit-inner-spin-button, {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.onboarding form label {
+  margin: 10px 0;
 
 }
+
 
 .onboarding form .multiple-input-container {
   display: flex;
@@ -189,4 +196,28 @@ nav .logo-container .logo {
   transition: all 0.3s;
   margin-right: 10px;
 }
+  
+.onboarding form input[type="radio"] {
+  display: none;
+}
+
+.onboarding form input[type="number"] {
+  width: 50px;
+}
+
+.onboarding form input[type="radio"]:checked + label {
+  border: solid 2px rgb(221,39,22);
+
+}
+
+.onboarding form input[type="submit"]:hover {
+  background-color: rgb(235,235,235);
+}
+
+.onboarding form input[type="submit"]:active {
+  background-color: rgb(226,115,115);
+}
+
+
+
 
