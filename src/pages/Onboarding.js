@@ -26,10 +26,9 @@ const Onboarding = () => {
     }
 
     const handleChange = (e) => {
-        console.log('e', e)
-        const value = e.target.value
+        const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
         const name = e.target.name
-        console.log('value' + value, 'name' + name)
+    
 
         setFormData((prevState) => ({
             ...prevState,
@@ -37,6 +36,8 @@ const Onboarding = () => {
 
         }))
     }
+
+    console.log(formData)
 
 
 
@@ -107,7 +108,7 @@ const Onboarding = () => {
                                     name="gender_identity"
                                     value={"man"}
                                     onChange={handleChange}
-                                    checked={false}
+                                    checked={formData.gender_identity === "Man"}
                                 />
 
                             
@@ -118,7 +119,7 @@ const Onboarding = () => {
                                     name="gender_identity"
                                     value={"woman"}
                                     onChange={handleChange}
-                                    checked={false}
+                                    checked={formData.gender_identity === "Woman"}
                                 />
 
                         </div>
@@ -134,7 +135,7 @@ const Onboarding = () => {
                                 name="gender_interest"
                                 value={"man"}
                                 onChange={handleChange}
-                                checked={false}
+                                checked={formData.gender_interest === "man"}
                             />
                         
 
@@ -146,7 +147,7 @@ const Onboarding = () => {
                                 name="gender_interest"
                                 value={"woman"}
                                 onChange={handleChange}
-                                checked={true}
+                                checked={formData.gender_interest === "woman"}
                             />
 
                         </div>
