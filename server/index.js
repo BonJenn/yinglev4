@@ -1,7 +1,7 @@
 const PORT = 8000
 const express = require('express')
 const { MongoClient } = require('mongodb')
-const uri = 'mongodb+srv://bonjenn:youwillneverknow64@cluster0.mmpepbb.mongodb.net/?retryWrites=true&w=majority'
+const uri = 'mongodb+srv://bonjenn:mypassword@cluster0.mmpepbb.mongodb.net/?retryWrites=true&w=majority'
 
 
 const app = express()
