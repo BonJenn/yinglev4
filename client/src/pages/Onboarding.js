@@ -31,8 +31,9 @@ const Onboarding = () => {
         e.preventDefault()
         try {
             const response = await axios.put('http://localhost:8000/user', { formData })
-            const success = response.statusCode === 200
-            if (success) navigate('./dashboard')
+            const success = response.status === 200
+            if (success) navigate('/dashboard')
+            console.log('The user has been created')
         } catch (err) {
             console.log(err)
         }
@@ -51,7 +52,7 @@ const Onboarding = () => {
         }))
     }
 
-    console.log(formData)
+   
 
 
 
