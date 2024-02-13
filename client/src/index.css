@@ -128,6 +128,10 @@ nav .logo-container .logo {
   padding: 40px;
 }
 
+.auth-modal H2 {
+  color: black;
+}
+
 .auth-modal .close-icon {
   float: right;
 }
@@ -151,6 +155,10 @@ nav .logo-container .logo {
 
 .onboarding {
   border-top: solid 1px rgb(213,213,213);
+}
+
+.onboarding h2 {
+  color: #000;
 }
 
 .onboarding form {
@@ -254,7 +262,7 @@ h1 {
 }
 
 h2 {
-  color: #fff;
+  color: #0000;
 }
 
 .swipe {
