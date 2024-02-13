@@ -24,7 +24,7 @@ const Home = () => {
             showModal={showModal}
             setIsSignUp={ setIsSignUp }/>
             <div className="home">
-                <h1 className="primary-title">The World's Most Wanted Singles</h1>
+                <h1 className="primary-title">The World's Most Sought-After Singles</h1>
                 <button className ="primary-button" onClick={handleClick}>
                     {authToken ? 'Signout' : 'Create Account'}
                 </button>
