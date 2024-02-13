@@ -55,7 +55,7 @@ app.post('/signup', async (req,res) => {
         expiresIn: '24h',
        })
 
-       res.status(201).json({ token, userId: generatedUserID, email: sanitizedEmail})
+       res.status(201).json({ token, userId: generatedUserID })
 
     } catch (err) {
        console.log(err);
@@ -84,7 +84,7 @@ app.post('/login', async (req, res) => {
             const token = jwt.sign({ userId: user.user_id, email }, 'your_secret_key', {
                 expiresIn: '24h' // Adjusted expiresIn value to match the format used in signup
             });
-            res.status(201).json({ token, userId: user.user_id, email });
+            res.status(201).json({ token, userId: user.user_id });
         } else {
             // Moved this line inside an else block to prevent sending multiple responses
             res.status(400).send('Invalid Credentials');
@@ -99,6 +99,7 @@ app.post('/login', async (req, res) => {
 
 app.get('/users', async (req,res) => {
     const client = new MongoClient(uri)
+
 
     try {
         await client.connect()
@@ -117,8 +118,37 @@ app.get('/users', async (req,res) => {
 
 })
 
+// Update a User
 
+app.put('/user', async (req, res) => {
+    const client = new MongoClient(uri);
+    const formData = req.body.formData;
 
+    try {
+        await client.connect();
+        const database = client.db('app-data');
+        const users = database.collection('users');
 
+        const query = { user_id: formData.user_id };
+        const updateDocument = {
+            $set: {
+                first_name: formData.first_name,
+                dob_day: formData.dob_day,
+                dob_month: formData.dob_month,
+                dob_year: formData.dob_year,
+                gender_identity: formData.gender_identity,
+                gender_interest: formData.gender_interest,
+                url: formData.url,
+                about: formData.about,
+                matches: formData.matches // Corrected typo from 'mathces' to 'matches'
+            }
+        };
+
+        const updatedUser = await users.updateOne(query, updateDocument); // Changed variable name from 'insertedUser' to 'updatedUser' for clarity
+        res.send(updatedUser);
+    } finally {
+        await client.close();
+    }
+});
 
 app.listen(PORT, ()=> console.log('Server running on PORT ' + PORT))
