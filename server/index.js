@@ -63,6 +63,37 @@ app.post('/signup', async (req,res) => {
 
 })
 
+// Log the User In
+
+app.post('/login', async (req, res) => {
+    const client = new MongoClient(uri);
+    const { email, password } = req.body;
+
+    try {
+        await client.connect();
+        const database = client.db('app-data');
+        const users = database.collection('users');
+
+        const user = await users.findOne({ email });
+
+        // Fixed typo in 'bcrypt' and added missing parenthesis
+        const correctPassword = await bcrypt.compare(password, user.hashed_password);
+
+        if (user && correctPassword) {
+            // Corrected jwt.sign parameters to include a payload object and the secret key
+            const token = jwt.sign({ userId: user.user_id, email }, 'your_secret_key', {
+                expiresIn: '24h' // Adjusted expiresIn value to match the format used in signup
+            });
+            res.status(201).json({ token, userId: user.user_id, email });
+        } else {
+            // Moved this line inside an else block to prevent sending multiple responses
+            res.status(400).send('Invalid Credentials');
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).send('An error occurred');
+    }
+});
 
 // Return Users 
 
