@@ -67,9 +67,12 @@ const Dashboard = () => {
         }
       
         return (
+          <>
+          { user &&
+
             <div className="dashboard">
                 
-                <ChatContainer/>
+                <ChatContainer user={user}/>
      
        
                 <div className="swipe-container">
@@ -91,7 +94,8 @@ const Dashboard = () => {
                         
                     </div>
                 </div>
-            </div>
+            </div>}
+            </>
         )
       }
 
