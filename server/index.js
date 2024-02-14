@@ -95,6 +95,34 @@ app.post('/login', async (req, res) => {
     }
 });
 
+
+
+//
+app.get('/user', async (req, res) => { // Added 'async' and fixed arrow function syntax
+    const client = new MongoClient(uri);
+    const userId = req.query.userId; // Changed from req.params to req.query for query parameters
+    
+    console.log('userId', userId)
+
+    try {
+        await client.connect(); // Fixed typo in 'connect'
+        const database = client.db('app-data');
+        const users = database.collection('users');
+
+        const query = { user_id: userId };
+        const user = await users.findOne(query);
+
+        res.send(user);
+    } catch (error) { // Added catch block to handle errors
+        console.error("Failed to fetch user:", error);
+        res.status(500).send("An error occurred while fetching the user.");
+    } finally {
+        await client.close();
+    }
+});
+
+
+
 // Return Users 
 
 app.get('/users', async (req,res) => {
