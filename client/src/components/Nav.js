@@ -12,7 +12,8 @@ const Nav = ({minimal, setShowModal, showModal, setIsSignUp }) => {
     return (
         <nav>
             <div className = "logo-container"> 
-                <img className="logo" src={minimal ? colorLogo : whiteLogo }/>
+                {/* <img className="logo" src={minimal ? colorLogo : whiteLogo }/> */}
+                <h1 className={minimal ? 'logo-gradient' : 'logo'}>yingle</h1> 
                 
                 
             </div>
