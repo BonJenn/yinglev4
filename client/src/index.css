@@ -1,5 +1,11 @@
+/* Readex Pro */
 @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap');
+/* Krona One */
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Readex+Pro:wght@160..700&display=swap');
+/* Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Krona+One&family=Readex+Pro:wght@160..700&display=swap');
+/*Quicksand */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Krona+One&family=Quicksand:wght@300..700&family=Readex+Pro:wght@160..700&display=swap');
 
 :root {
   --white-color: rgb(255,255,255);
@@ -125,18 +131,38 @@ nav .logo-container {
  
 }
 
-.hero_section {
+.hero-sections {
+  display: flex;
+  flex-direction: column;
+ 
+}
+
+.hero_section_women, .hero_section_man {
+  width: 50%; /* Example width, adjust as needed */
+  padding: 100px;
+  padding-top: 50px;
+}
+
+.hero_section_women {
   margin-top: 30px;
+  height: auto;
+  background-color: black;
+  width: 45%;
+  align-self: flex-start;
+}
+
+.hero_section_man {
   padding: 70px;
   height: auto;
-  background-color: rgb(227, 227, 227);
+  background-color: black;
+  width: 45%;
+  align-self: flex-end;
 }
 
 .hero_info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 30px; /* Adjusts spacing between flex items */
 }
 
 .hero_section .hero_text_main,
@@ -147,22 +173,30 @@ nav .logo-container {
 }
 
 .hero_section .hero_text_main {
-  color: black;
+  color: white;
 }
 
-.hero_text_title_1 {
-  color: rgb(123, 225, 241);
+.hero_text_main {
+  font-family: 'Cormorant';
+}
+
+.hero_text_title_1, .hero_text_title_2 {
+  color: white;
   font-size: 75px;
+  font-family: 'Cormorant';
 }
 
-.hero_text_title_2 {
-  color: rgb(243, 134, 124);
-  font-size: 75px;
+
+.hero_text_description {
+  color: white;
+  font-family: 'Quicksand';
+  line-height: 3;
+
 }
 
-.hero_section .hero_text_description {
-  color: black;
-}
+/* ----- Homepage Footer ------ */
+
+
 
 .footer_area {
   color: white;
