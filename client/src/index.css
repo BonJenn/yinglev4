@@ -135,6 +135,7 @@ nav .logo-container {
 */
 
 .home {
+
   overflow-y:auto; 
   margin-top: 10vh;
   min-height: auto;
@@ -148,38 +149,49 @@ nav .logo-container {
 }
 
 .hero_section {
-  border-radius: 20px;
-  margin: 30px;
-  padding: 30px;
+
+
+  margin-top: 30px;
+  padding: 70px;
   height: auto;
-  background-color: black;
+  background-color: rgb(227, 227, 227);
 
 }
+
+
 
 .hero_info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px; /* Adjusts spacing between flex items */
+  gap: 30px; /* Adjusts spacing between flex items */
+  
 }
 
 .hero_section .hero_text_main,
-.hero_section .hero_text_title,
+.hero_section .hero_text_title_1,
+.hero_section .hero_text_title_2,
 .hero_section .hero_text_description {
   margin: 0; /* Removes default margins */
+  
 }
 
 .hero_section .hero_text_main {
-  color: white;
+  color: black;
 }
 
-.hero_section .hero_text_title {
-  color: white;
-  font-size: 100px;
+.hero_text_title_1 {
+  color: rgb(123, 225, 241);
+  font-size: 75px;
+}
+
+.hero_text_title_2 {
+  color: rgb(243, 134, 124);
+  font-size: 75px;
 }
 
 .hero_section .hero_text_description {
-  color: white;
+  color: black;
 }
 
 

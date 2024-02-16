@@ -125,17 +125,20 @@ app.get('/user', async (req, res) => { // Added 'async' and fixed arrow function
 
 // Return Users 
 
-app.get('/users', async (req,res) => {
+app.get('/gendered-users', async (req,res) => {
     const client = new MongoClient(uri)
+    const gender = req.query.gender
 
 
     try {
         await client.connect()
         const database = client.db('app-data')
         const users = database.collection('users')
+        const query = { gender_identity: { $eq : 'man'} }
+        const foundUsers = await users.find(query).toArray() 
 
-        const returnedUsers = await users.find().toArray()
-        res.send(returnedUsers)
+     
+        res.send(foundUsers)
 
     } catch (error) {
         console.error("Failed to fetch users:", error);
