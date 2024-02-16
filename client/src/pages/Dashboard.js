@@ -8,7 +8,8 @@ import axios from 'axios'
 
 const Dashboard = () => {
     const [user, setUser] = useState(null)
-    const [genderedUsers, setGenderedUsers ] = useState(null)
+    const [genderedUsers, setGenderedUsers ] = useState([])
+    const [lastDirection, setLastDirection] = useState()
     const [ cookies, setCookie, removeCookie ] = useCookies(['user'])
 
 
@@ -45,37 +46,18 @@ const Dashboard = () => {
     useEffect(() => {
       getUser()
       getGenderedUsers()
-    }, [])
+    }, [user, genderedUsers])
 
     console.log('user', user)
-    console.log('gendered-users', genderedUsers)
+    console.log('gendered-users', genderedUsers )
+    
 
 
-    const characters = [
-        {
-          name: 'Richard Hendricks',
-          url: 'https://upload.wikimedia.org/wikipedia/en/3/3b/SpongeBob_SquarePants_character.svg'
-        },
-        {
-          name: 'Erlich Bachman',
-          url: 'https://upload.wikimedia.org/wikipedia/en/3/3b/SpongeBob_SquarePants_character.svg'
-        },
-        {
-          name: 'Monica Hall',
-          url: 'https://upload.wikimedia.org/wikipedia/en/3/3b/SpongeBob_SquarePants_character.svg'
-        },
-        {
-          name: 'Jared Dunn',
-          url: 'https://upload.wikimedia.org/wikipedia/en/3/3b/SpongeBob_SquarePants_character.svg'
-        },
-        {
-          name: 'Dinesh Chugtai',
-          url: 'https://upload.wikimedia.org/wikipedia/en/3/3b/SpongeBob_SquarePants_character.svg'
-        }
-      ]
+    
+
       
    
-        const [lastDirection, setLastDirection] = useState()
+        
       
         const swiped = (direction, nameToDelete) => {
           console.log('removing: ' + nameToDelete)
@@ -92,19 +74,19 @@ const Dashboard = () => {
 
             <div className="dashboard">
                 
-                <ChatContainer user={user}/>
+                 <ChatContainer user={user}/>
      
        
                 <div className="swipe-container">
                     <div className='card-container'>
                         
-                        {characters.map((character) =>
+                        {genderedUsers?.map((genderedUser) =>
                             <TinderCard className='swipe' 
-                            key={character.name} onSwipe={(dir) => swiped(dir, character.name)} 
-                            onCardLeftScreen={() => outOfFrame(character.name)}>
-                            <div style={{ backgroundImage: 'url(' + character.url + ')' }} 
+                            key={genderedUser.first_name} onSwipe={(dir) => swiped(dir, genderedUser.name)} 
+                            onCardLeftScreen={() => outOfFrame(genderedUser.first_name)}>
+                            <div style={{ backgroundImage: 'url(' + genderedUser.url + ')' }} 
                             className='card'>
-                            <h3>{character.name}</h3>
+                            <h3>{genderedUser.first_name}</h3>
                             </div>
                             </TinderCard>
                         )}
@@ -113,7 +95,7 @@ const Dashboard = () => {
                         </div>
                         
                     </div>
-                </div>
+                </div> 
             </div>}
             </>
         )
