@@ -2,18 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Readex+Pro:wght@160..700&display=swap');
 
 
-#root {
-  overflow: hidden;
-}
+
 
 html, body {
   margin: 0;
   padding: 0;
-  text-align: center;
+  
 }
 
 h2 {
-  font-style: italic;
+  
 }
 
 * {
@@ -21,8 +19,10 @@ h2 {
 }
 
 .primary-title {
-  font-size: 90px;
-  color: rgb(255,255,255);
+  font-size: 70px;
+  color: rgb(0, 0, 0);
+  padding: 30px;
+  margin: 10px;
 
 }
 
@@ -93,7 +93,7 @@ nav .logo-container {
 .logo-container .logo {
   font-family: 'Krona One', sans-serif;
   width: 100%;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 30px;
 }
 
@@ -108,14 +108,24 @@ nav .logo-container {
 
 /*------ Homepage -----*/
 
+
+/*
 .overlay {
   z-index: 1000;
-  width: 100vw;
-  height: 100vh;
+  width: auto;
+  
   position: fixed;
-  background: linear-gradient(#EA5440, #FFD234);
+  background: rgba(0, 0, 0, 0)
 }
-  /*
+
+.overlay.active {
+  z-index: 1000;
+  width: auto;
+
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+}
+  
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.65) 0%,
@@ -125,7 +135,51 @@ nav .logo-container {
 */
 
 .home {
+  overflow-y:auto; 
   margin-top: 10vh;
+  min-height: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+}
+
+.hero_section {
+  border-radius: 20px;
+  margin: 30px;
+  padding: 30px;
+  height: auto;
+  background-color: black;
+
+}
+
+.hero_info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px; /* Adjusts spacing between flex items */
+}
+
+.hero_section .hero_text_main,
+.hero_section .hero_text_title,
+.hero_section .hero_text_description {
+  margin: 0; /* Removes default margins */
+}
+
+.hero_section .hero_text_main {
+  color: white;
+}
+
+.hero_section .hero_text_title {
+  color: white;
+  font-size: 100px;
+}
+
+.hero_section .hero_text_description {
+  color: white;
 }
 
 
@@ -328,7 +382,7 @@ h2 {
 }
 
 .chat-container-header {
-  background: linear-gradient(45deg, rgb(254,48,144), rgb(255, 89, 64));
+  background: white;
   height: 100px;
   display: flex;
   justify-content: space-between;
@@ -353,7 +407,7 @@ h2 {
   display: flex;
   align-items: center;
   padding: 20px;
-  color: rgb(255,255,25);
+  color: rgb(0, 0, 0);
 }
 
 img-container {

@@ -1,4 +1,5 @@
 import Nav from '../components/Nav'
+import Hero from '../components/Hero'
 import AuthModal from "../components/AuthModal"
 import { useState } from 'react'
 
@@ -17,12 +18,13 @@ const Home = () => {
 
 
     return (
-        <div className="overlay">
+        <div className={`overlay1 ${showModal ? 'active' : ''}`}>
             <Nav minimal={false} 
      
             setShowModal={ setShowModal } 
             showModal={showModal}
             setIsSignUp={ setIsSignUp }/>
+            
             <div className="home">
                 <h1 className="primary-title">The World's Most Sought-After Singles</h1>
                 <button className ="primary-button" onClick={handleClick}>
@@ -32,7 +34,10 @@ const Home = () => {
                 {showModal && (
                     <AuthModal setShowModal={setShowModal} isSignUp={isSignUp} />
                 )}
+
+               
             </div>
+            <Hero/>
         </div>
     )
 }
