@@ -13,7 +13,7 @@ const Dashboard = () => {
     const [ cookies, setCookie, removeCookie ] = useCookies(['user'])
 
 
-    const userId = cookies.UserId
+    const userId = cookies['UserId']
 
     const getUser = async () => {
       try {
@@ -44,14 +44,31 @@ const Dashboard = () => {
 
 
     useEffect(() => {
+      if (user) {
+        getGenderedUsers()
+      }
+    }, [user])
+
+    useEffect(() => {
       getUser()
-      getGenderedUsers()
-    }, [user, genderedUsers])
+    }, [])
 
     console.log('user', user)
     console.log('gendered-users', genderedUsers )
-    
 
+    const updateMatches = async (matchedUserId) => {
+      try {
+        await axios.put('http://localhost:8000/addmatch', {
+          userId,
+          matchedUserId
+        })
+        getUser()
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    console.log(user)
 
     
 
@@ -59,8 +76,11 @@ const Dashboard = () => {
    
         
       
-        const swiped = (direction, nameToDelete) => {
-          console.log('removing: ' + nameToDelete)
+        const swiped = (direction, swipedUserId) => {
+          
+          if(direction === 'right') {
+            updateMatches(swipedUserId)
+          }
           setLastDirection(direction)
         }
       
@@ -83,7 +103,7 @@ const Dashboard = () => {
                         {genderedUsers?.map((genderedUser) =>
                             <TinderCard className='swipe' 
                             key={genderedUser.first_name} onSwipe={(dir) => swiped(dir, genderedUser.name)} 
-                            onCardLeftScreen={() => outOfFrame(genderedUser.first_name)}>
+                            onCardLeftScreen={() => outOfFrame(genderedUser.user_id)}>
                             <div style={{ backgroundImage: 'url(' + genderedUser.url + ')' }} 
                             className='card'>
                             <h3>{genderedUser.first_name}</h3>
