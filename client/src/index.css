@@ -1,13 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Readex+Pro:wght@160..700&display=swap');
 
-
-
+:root {
+  --white-color: rgb(255,255,255);
+  --black-color: black;
+  --red-color: rgb(243,33,33);
+  --grey-color: rgb(187,187,187);
+  --border-radius-half: 15px;
+  --font-size-large: 20px;
+}
 
 html, body {
   margin: 0;
-  padding: 0;
-  
+  padding: 0; 
 }
 
 h2 {
@@ -56,7 +61,6 @@ h2 {
   color: rgb(48,48,48);
   border: solid 2px rgb(48,48,48);
 }
-
 
 /*------ Navbar -----*/
 
@@ -108,34 +112,7 @@ nav .logo-container {
 
 /*------ Homepage -----*/
 
-
-/*
-.overlay {
-  z-index: 1000;
-  width: auto;
-  
-  position: fixed;
-  background: rgba(0, 0, 0, 0)
-}
-
-.overlay.active {
-  z-index: 1000;
-  width: auto;
-
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-}
-  
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.65) 0%,
-    rgba(0, 0, 0, 0) 100%
-  ), url(images/background.webp)
-}
-*/
-
 .home {
-
   overflow-y:auto; 
   margin-top: 10vh;
   min-height: auto;
@@ -145,27 +122,21 @@ nav .logo-container {
   justify-content: center;
   align-items: center;
   text-align: center;
-  
+ 
 }
 
 .hero_section {
-
-
   margin-top: 30px;
   padding: 70px;
   height: auto;
   background-color: rgb(227, 227, 227);
-
 }
-
-
 
 .hero_info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 30px; /* Adjusts spacing between flex items */
-  
 }
 
 .hero_section .hero_text_main,
@@ -173,7 +144,6 @@ nav .logo-container {
 .hero_section .hero_text_title_2,
 .hero_section .hero_text_description {
   margin: 0; /* Removes default margins */
-  
 }
 
 .hero_section .hero_text_main {
@@ -194,8 +164,14 @@ nav .logo-container {
   color: black;
 }
 
+.footer_area {
+  color: white;
+  background-color: black;
+  height: 200px;
+}
 
 /* -------- Auth Modal ------ */
+
 .auth-modal {
   position: fixed;
   left: 0;
@@ -231,8 +207,6 @@ nav .logo-container {
   font-size: 17px;
 }
 
-
-
 /* --- Onboarding Page ----- */
 
 .onboarding {
@@ -246,7 +220,6 @@ nav .logo-container {
 .onboarding form {
   display: flex;
   justify-content: center;
-
 }
 
 .onboarding form section {
@@ -273,7 +246,6 @@ nav .logo-container {
 
 .onboarding form label {
   margin: 10px 0;
-
 }
 
 
@@ -284,7 +256,6 @@ nav .logo-container {
 
 .onboarding form .multiple-input-container input {
   margin-right: 10px; 
-
 }
 
 .onboarding form .multiple-input-container label {
@@ -305,7 +276,6 @@ nav .logo-container {
 
 .onboarding form input[type="radio"]:checked + label {
   border: solid 2px rgb(221,39,22);
-
 }
 
 .onboarding form input[type="submit"]:hover {
@@ -319,7 +289,6 @@ nav .logo-container {
 .onboarding form .photo-container {
   width: 100%;
 }
-
 
 /* --- Dashboard Page ----- */
 
@@ -335,7 +304,6 @@ nav .logo-container {
   justify-content: center;
   align-items: center;
   height: 100vh;
-
 }
 
 h1 {
@@ -358,18 +326,14 @@ h2 {
 }
 
 .card {
-  
   background-color: #fff;
   width: 400px;
   height: 650px;
   height: 300px;
-
   border-radius: 30px;
   background-size: cover;
   background-position: center;
 }
-
-
 
 .card h3 {
   margin-top: 0;
@@ -383,9 +347,8 @@ h2 {
 
 /* --- Chat Container ----- */
 
-
 .chat-container {
-  background-color: rgb(255,255,255);
+  background-color: var(--white-color);
   box-shadow: rgba(0,0,0,0.05) 0px 6px 24px 0px,
   rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   width: 30%;
@@ -393,55 +356,55 @@ h2 {
   z-index: 1;
 }
 
-.chat-container-header {
-  background: white;
+.chat-header-container {
+  background-color: var(--black-color);
   height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.chat-header-container .img-container {
+ 
+  border-radius: var(--border-radius-half);
+  overflow: hidden;
+  margin: 10px;
+}
+
+.chat-header-container img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .chat-container .option {
   border: none;
-  background-color: rgb(255,255,255);
-  border-bottom: solid 4px rgb(243,33,33);
-  font-size: 20px;
+  background-color: var(--white-color);
+  border-bottom: solid 4px var(--red-color);
+  font-size: var(--font-size-large);
   margin: 2px;
   padding: 10px;
 }
 
 .chat-container .option:disabled {
-  border-bottom: solid 4px rgb(187,187,187)
+  border-bottom: solid 4px var(--grey-color);
 }
 
 .chat-container .profile,
-.chat-container .log-out-icon{
+.chat-container h3 {
   display: flex;
   align-items: center;
   padding: 20px;
-  color: rgb(0, 0, 0);
-}
-
-img-container {
-  height: 30px;
-  width: 30px;
-  border-radius: 15px;
-  overflow: hidden;
-  margin: 10px;
-}
-
-.img-container img {
-  width: 100%;
-  border-radius: 360px;
+  color: var(--white-color);
 }
 
 /* ---- Chat Display ---- */
 
 .chat-display {
   padding: 20px;
-    height: 60vh;
-    overflow-y: auto;
-
+  height: 60vh;
+  overflow-y: auto;
 }
 
 .chat-input {

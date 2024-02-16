@@ -1,5 +1,6 @@
 import Nav from '../components/Nav'
 import Hero from '../components/Hero'
+import Footer from '../components/Footer'
 import AuthModal from "../components/AuthModal"
 import { useState } from 'react'
 
@@ -18,7 +19,7 @@ const Home = () => {
 
 
     return (
-        <div className={`overlay1 ${showModal ? 'active' : ''}`}>
+        <div className={`overlay ${showModal ? 'active' : ''}`}>
             <Nav minimal={false} 
      
             setShowModal={ setShowModal } 
@@ -38,6 +39,7 @@ const Home = () => {
                
             </div>
             <Hero/>
+            <Footer/>
         </div>
     )
 }

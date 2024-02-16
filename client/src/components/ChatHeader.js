@@ -12,7 +12,7 @@ const ChatHeader = ({ user }) => {
     };
 
     return (
-        <div className="chat-container-header">
+        <div className="chat-header-container">
             <div className="profile">
                 <div className="img-container">
                     {user && <img src={user.url} alt={"photo of " + user.first_name}/>}
@@ -20,7 +20,7 @@ const ChatHeader = ({ user }) => {
                 <h3>{user && user.first_name}</h3>   
             </div> 
             {/* Fix the onClick event to be properly assigned to an element */}
-            <i className="log-out-icon" onClick={logout}>Log out</i>
+            <h3 className="log-out-icon" onClick={logout}>Log out</h3>
         </div>
     );
 };
