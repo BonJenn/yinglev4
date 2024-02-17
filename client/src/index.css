@@ -5,7 +5,8 @@
 /* Cormorant */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Krona+One&family=Readex+Pro:wght@160..700&display=swap');
 /*Marcellus */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=DM+Serif+Text:ital@0;1&family=Krona+One&family=Marcellus&family=Quicksand:wght@300..700&family=Readex+Pro:wght@160..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap')
+
 
 :root {
   --white-color: rgb(255,255,255);
@@ -21,9 +22,6 @@ html, body {
   padding: 0; 
 }
 
-h2 {
-  
-}
 
 * {
   font-family: 'Readex Pro', sans-serif;
@@ -121,6 +119,7 @@ nav .logo-container {
 .home {
   overflow-y:auto; 
   margin-top: 10vh;
+  margin-bottom: 10vh;
   min-height: auto;
   height: auto;
   display: flex;
@@ -182,7 +181,7 @@ nav .logo-container {
 
 .hero_text_title_1, .hero_text_title_2 {
   color: white;
-  font-size: 75px;
+  font-size: 50px;
   font-family: 'Cormorant';
   margin-bottom: 10px; /* Reduce the bottom margin to bring them closer */
 }
@@ -193,6 +192,18 @@ nav .logo-container {
   line-height: 3;
   margin-top: 10px; /* Reduce the top margin to bring it closer to the titles */
 }
+
+.hero_quotes {
+  height: auto;
+  width: auto;
+  background-color: black;
+  color: purple;
+  height: 300px;
+  margin: 30px;
+  font-family: 'Marcellus'
+  
+}
+
 
 /* ----- Homepage Footer ------ */
 

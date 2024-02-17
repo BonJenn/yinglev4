@@ -76,10 +76,10 @@ const Dashboard = () => {
    
         
       
-        const swiped = (direction, swipedUserId) => {
+        const swiped = (direction, swipedUser) => {
           
           if(direction === 'right') {
-            updateMatches(swipedUserId)
+            updateMatches(swipedUser)
           }
           setLastDirection(direction)
         }

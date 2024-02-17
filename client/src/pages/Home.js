@@ -1,5 +1,6 @@
 import Nav from '../components/Nav'
 import Hero from '../components/Hero'
+import Hero_Quotes from '../components/Hero_Quotes'
 import Footer from '../components/Footer'
 import AuthModal from "../components/AuthModal"
 import { useState } from 'react'
@@ -39,6 +40,7 @@ const Home = () => {
                
             </div>
             <Hero/>
+            <Hero_Quotes/>
             <Footer/>
         </div>
     )
