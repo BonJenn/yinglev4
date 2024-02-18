@@ -33,8 +33,8 @@ app.post('/signup', async (req,res) => {
 
     try {
         await client.connect()
-        const database = client.db('app-data')
-        const users = database.collection('users')
+        const database = client.db('app-data');
+        const users = database.collection('users');
         const existingUser = await users.findOne({ email })
 
         if (existingUser) {
@@ -123,6 +123,41 @@ app.get('/user', async (req, res) => { // Added 'async' and fixed arrow function
 
 
 
+app.get('/users', async (req, res) => {
+    const client = new MongoClient(uri);
+    const userIds = JSON.parse(req.query.userIds);
+    console.log(userIds);
+
+    try {
+        await client.connect();
+        const database = client.db('app-data');
+        const users = database.collection('users');
+
+        const pipeline = [
+            {
+                '$match': {
+                    'user_id': {
+                        '$in': userIds
+                    }
+                }
+            }
+        ];
+
+        const foundUsers = await users.aggregate(pipeline).toArray();
+        console.log(foundUsers);
+        res.send(foundUsers);
+
+    } catch (error) {
+        console.error("Failed to fetch users:", error);
+        res.status(500).send("An error occurred while fetching users.");
+    } finally {
+        await client.close();
+    }
+});
+
+
+
+
 // Return Users 
 
 app.get('/gendered-users', async (req,res) => {
@@ -194,8 +229,8 @@ app.put('/addmatch', async (req,res) => {
 
     try {
         await client.connect()
-        const database = client.db('app-data')
-        const users = database.collection('users')
+        const database = client.db('app-data');
+        const users = database.collection('users');
 
         const query = { user_id: userId }
 

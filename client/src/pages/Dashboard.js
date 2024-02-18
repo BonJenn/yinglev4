@@ -87,6 +87,12 @@ const Dashboard = () => {
         const outOfFrame = (name) => {
           console.log(name + ' left the screen!')
         }
+
+        const matchedUserIds = user?.matches.map(({ user_id }) => user_id).concat(userId)
+
+        const filteredGenderedUsers = genderedUsers?.filter(
+          genderedUser => !matchedUserIds.includes(genderedUser.usr_id)
+        )
       
         return (
           <>
@@ -100,7 +106,7 @@ const Dashboard = () => {
                 <div className="swipe-container">
                     <div className='card-container'>
                         
-                        {genderedUsers?.map((genderedUser) =>
+                        {filteredGenderedUsers?.map((genderedUser) =>
                             <TinderCard className='swipe' 
                             key={genderedUser.first_name} onSwipe={(dir) => swiped(dir, genderedUser.user_id)} 
                             onCardLeftScreen={() => outOfFrame(genderedUser.user_id)}>
