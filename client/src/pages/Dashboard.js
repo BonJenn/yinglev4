@@ -76,10 +76,10 @@ const Dashboard = () => {
    
         
       
-        const swiped = (direction, swipedUser) => {
+        const swiped = (direction, swipedUserId) => {
           
           if(direction === 'right') {
-            updateMatches(swipedUser)
+            updateMatches(swipedUserId)
           }
           setLastDirection(direction)
         }
@@ -102,7 +102,7 @@ const Dashboard = () => {
                         
                         {genderedUsers?.map((genderedUser) =>
                             <TinderCard className='swipe' 
-                            key={genderedUser.first_name} onSwipe={(dir) => swiped(dir, genderedUser.name)} 
+                            key={genderedUser.first_name} onSwipe={(dir) => swiped(dir, genderedUser.user_id)} 
                             onCardLeftScreen={() => outOfFrame(genderedUser.user_id)}>
                             <div style={{ backgroundImage: 'url(' + genderedUser.url + ')' }} 
                             className='card'>
