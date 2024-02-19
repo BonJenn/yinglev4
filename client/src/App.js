@@ -1,4 +1,4 @@
-import Home from './pages/Home'
+import Home from './pages/Home/Home'
 import Onboarding from './pages/Onboarding'
 import Dashboard from './pages/Dashboard'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'

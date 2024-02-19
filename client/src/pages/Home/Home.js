@@ -1,8 +1,9 @@
-import Nav from '../components/Nav'
-import Hero from '../components/Hero'
-import Hero_Quotes from '../components/Hero_Quotes'
-import Footer from '../components/Footer'
-import AuthModal from "../components/AuthModal"
+import Nav from '../../components/Nav'
+import Hero from './Hero'
+import Hero_Quotes from './Hero_Quotes'
+import Footer from '../../components/Footer'
+import AuthModal from "../../components/AuthModal"
+import styles from './Home.module.css'
 import { useState } from 'react'
 import { useCookies } from 'react-cookie'
 
@@ -40,12 +41,20 @@ const Home = () => {
                 showModal={showModal}
                 setIsSignUp={setIsSignUp}/>
             
-            <div className="home">
-                <h1 className="primary-title">The World's Most Sought-After Singles</h1>
-                <button className ="primary-button" onClick={handleClick}>
-                    {authToken ? 'Signout' : 'Create Account'}
-                </button>
+            <div className={styles.home}>
+                <div className={styles.home_column1}>
+                    <h1 className="primary-title">The World's Most Sought-After Singles</h1>
+                    <button className ="primary-button" onClick={handleClick}>
+                        {authToken ? 'Signout' : 'Create Account'}
+                    </button>
+                </div>
 
+                <div className={styles.home_column2}>
+                    <div className={styles.home_filler_img}>
+
+                    </div>
+                </div>
+             
                 {showModal && (
                     <AuthModal setShowModal={setShowModal} isSignUp={isSignUp} />
                 )}
