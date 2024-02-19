@@ -461,11 +461,14 @@ h2 {
 
 /* ---- Chat Display ---- */
 
-.chat-display {
+.chat-display,
+.matches-display {
   padding: 20px;
   height: 60vh;
   overflow-y: auto;
 }
+
+
 
 .chat-display img {
   border-radius: 50%;
