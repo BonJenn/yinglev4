@@ -221,6 +221,8 @@ app.put('/user', async (req, res) => {
 
 
 
+
+// Add Matches
 app.put('/addmatch', async (req,res) => {
     const client = new MongoClient(uri)
     const { userId, matchedUserId } = req.body
@@ -244,6 +246,32 @@ app.put('/addmatch', async (req,res) => {
     }
 
 })
+
+// Get Messages
+
+app.get('/messages', async (req, res) => {
+    const client = new MongoClient(uri)
+    const {userId, correspondingUserId} = req.query
+    console.log(userId, correspondingUserId)
+    try {
+        await client.connect()
+        const database = client.db('app-data')
+        const messages = database.collection('messages')
+
+        const query = {
+            from_userId: userId, to_userId: correspondingUserId
+        }
+
+        const foundMessages = await messages.find(query).toArray()
+        res.send(foundMessages)
+    } finally {
+        await client.close()
+    }
+})
+
+
+
+
 
 app.listen(PORT, ()=> console.log('Server running on PORT ' + PORT))
 
