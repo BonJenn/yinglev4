@@ -44,18 +44,19 @@ const Dashboard = () => {
 
 
     useEffect(() => {
-      if (user) {
-        getGenderedUsers()
-      }
-    }, [user])
-
-    useEffect(() => {
       getUser()
+      
     }, [])
 
-    console.log('user', user)
-    console.log('gendered-users', genderedUsers )
+    useEffect(() => {
+    if (user) {
+      getGenderedUsers()
+    }
+    }, [user])
+      
 
+
+  
     const updateMatches = async (matchedUserId) => {
       try {
         await axios.put('http://localhost:8000/addmatch', {
@@ -108,7 +109,7 @@ const Dashboard = () => {
                         
                         {filteredGenderedUsers?.map((genderedUser) =>
                             <TinderCard className='swipe' 
-                            key={genderedUser.first_name} onSwipe={(dir) => swiped(dir, genderedUser.user_id)} 
+                            key={genderedUser.user_id} onSwipe={(dir) => swiped(dir, genderedUser.user_id)} 
                             onCardLeftScreen={() => outOfFrame(genderedUser.user_id)}>
                             <div style={{ backgroundImage: 'url(' + genderedUser.url + ')' }} 
                             className='card'>

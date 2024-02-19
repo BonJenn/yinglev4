@@ -4,28 +4,41 @@ import Hero_Quotes from '../components/Hero_Quotes'
 import Footer from '../components/Footer'
 import AuthModal from "../components/AuthModal"
 import { useState } from 'react'
+import { useCookies } from 'react-cookie'
 
 const Home = () => {
 
     const [ showModal, setShowModal ] = useState(false)
-    const [ isSignUp, setIsSignUp ] = useState(true)
+    const [isSignUp, setIsSignUp] = useState(true)
+    const [cookies, setCookie, removeCookie] = useCookies(['user'])
 
-    const authToken = false
+
+    const authToken = cookies.AuthToken
 
     const handleClick = ()=> {
+        if (authToken) {
+            removeCookie('UserId', cookies.UserId)
+            removeCookie('AuthToken', cookies.AuthToken)
+            window.location.reload()
+            return
+        }
+
         console.log('clicked')
         setShowModal(true)
         setIsSignUp(true)
+
+        
     }
 
 
     return (
         <div className={`overlay ${showModal ? 'active' : ''}`}>
-            <Nav minimal={false} 
-     
-            setShowModal={ setShowModal } 
-            showModal={showModal}
-            setIsSignUp={ setIsSignUp }/>
+            <Nav 
+                authToken={authToken}
+                minimal={false} 
+                setShowModal={setShowModal} 
+                showModal={showModal}
+                setIsSignUp={setIsSignUp}/>
             
             <div className="home">
                 <h1 className="primary-title">The World's Most Sought-After Singles</h1>
