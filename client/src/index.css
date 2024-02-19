@@ -467,6 +467,14 @@ h2 {
   overflow-y: auto;
 }
 
+.chat-display img {
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 10px;
+  width: 50px; /* Set width */
+  height: 50px; /* Set height */
+}
+
 .chat-input {
   padding: 20px;
   display: flex;
