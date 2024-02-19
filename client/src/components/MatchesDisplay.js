@@ -1,42 +1,46 @@
 import axios from 'axios';
-import { useState
-    , useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import { useCookies } from 'react-cookie';
 
-const MatchesDisplay = ({ matches, setClickedUser }) => {
-    const [matchedProfiles, setMatchedProfiles] = useState(null)
-    
-    const matchedUserIds = matches.map(({ user_id }) => user_id)
-    
-    const getMatches = async () => {
-        try {
-            const response = await axios.get('http://localhost:8000/users', {
-                params: {userIds: JSON.stringify(matchedUserIds)}
-            })
-            setMatchedProfiles(response.data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
+const MatchesDisplay = ({ setClickedUser }) => {
+    const [potentialMatches, setPotentialMatches] = useState([]);
+    const [cookies] = useCookies(['UserId']);
+    const userId = cookies.UserId; // Assuming you store the user's ID in a cookie named 'UserId'
 
     useEffect(() => {
-        getMatches()
-    }, [matches])
-
-
-
+        const fetchMatches = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8000/users/matches`, {
+                    params: { userId }
+                });
+                setPotentialMatches(response.data); // Assuming potentialMatches should be renamed to something like matchedUsers
+            } catch (error) {
+                console.error("Error fetching matches:", error);
+            }
+        };
+        if (userId) {
+            fetchMatches();
+        }
+    }, [userId]);
     
+    
+
     return (
         <div className="matches-display">
-            {matchedProfiles?.map((match) => (
-                <div key={match.user_id} className="match-card" onClick={() => {setClickedUser(match)}}>
-                    <div className="img-container">
-                        <img src={match?.url} alt={`${match?.first_name} profile`} />
+            {potentialMatches.length > 0 ? (
+                potentialMatches.map((match, index) => (
+                    <div key={index} className="match-card" onClick={() => setClickedUser(match)}>
+                        <div className="img-container">
+                            <img src={match.url} alt={`${match.first_name} profile`} />
+                        </div>
+                        <h3>{match.first_name}</h3>
                     </div>
-                    <h3>{match?.first_name}</h3>
-                </div>
-            ))}
+                ))
+            ) : (
+                <p>No potential matches found.</p>
+            )}
         </div>
-    )
-}
+    );
+};
 
-export default MatchesDisplay
+export default MatchesDisplay;

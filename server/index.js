@@ -223,29 +223,37 @@ app.put('/user', async (req, res) => {
 
 
 // Add Matches
-app.put('/addmatch', async (req,res) => {
-    const client = new MongoClient(uri)
-    const { userId, matchedUserId } = req.body
-
-    console.log('Updating matches for userId:', userId);
+app.put('/addmatch', async (req, res) => {
+    const client = new MongoClient(uri);
+    const { userId, matchedUserId } = req.body;
 
     try {
-        await client.connect()
+        await client.connect();
         const database = client.db('app-data');
         const users = database.collection('users');
 
-        const query = { user_id: userId }
+        // Check for mutual interest
+        const currentUser = await users.findOne({ user_id: userId });
+        const matchedUser = await users.findOne({ user_id: matchedUserId });
 
-        const updateDocument = {
-            $push: { matches: {user_id: matchedUserId}},
+        if (matchedUser.matches && matchedUser.matches.includes(userId)) {
+            // Mutual match found, update both users
+            await users.updateOne({ user_id: userId }, { $addToSet: { matches: matchedUserId } });
+            await users.updateOne({ user_id: matchedUserId }, { $addToSet: { matches: userId } });
+            res.send({ message: 'Match confirmed' });
+        } else {
+            // No mutual match yet, just record the current user's interest
+            await users.updateOne({ user_id: userId }, { $addToSet: { matches: matchedUserId } });
+            res.send({ message: 'Interest recorded' });
         }
-        const user = await users.updateOne(query, updateDocument)
-        res.send(user)
+    } catch (error) {
+        console.error("Failed to add match:", error);
+        res.status(500).send("An error occurred while adding match.");
     } finally {
-        await client.close()
+        await client.close();
     }
+});
 
-})
 
 // Get Messages
 
@@ -290,8 +298,67 @@ app.post('/message', async (req, res) => {
 });
 
 
+app.get('/users/potentialMatches', async (req, res) => {
+    const client = new MongoClient(uri);
+    const userId = req.query.userId; // Assuming you're passing the current user's ID as a query parameter
 
+    try {
+        await client.connect();
+        const database = client.db('app-data');
+        const users = database.collection('users');
 
+        // First, find the current user to get their matches and preferences
+        const currentUser = await users.findOne({ user_id: userId });
+        if (!currentUser) {
+            res.status(404).send('User not found');
+            return;
+        }
+
+        // Assuming 'matches' field contains IDs of users that the current user has liked
+        const { matches = [] } = currentUser;
+
+        // Fetch potential matches excluding the current user and their matches
+        const potentialMatches = await users.find({
+            user_id: { $ne: userId, $nin: matches } // Exclude current user and their matches
+            // Add additional criteria here based on preferences
+        }).toArray();
+
+        res.json(potentialMatches);
+    } catch (error) {
+        console.error("Failed to fetch potential matches:", error);
+        res.status(500).send("An error occurred while fetching potential matches.");
+    } finally {
+        await client.close();
+    }
+});
+
+app.get('/users/matches', async (req, res) => {
+    const client = new MongoClient(uri);
+    const userId = req.query.userId;
+
+    try {
+        await client.connect();
+        const database = client.db('app-data');
+        const users = database.collection('users');
+
+        // Fetch the current user to get their matches
+        const currentUser = await users.findOne({ user_id: userId });
+        const currentUserMatches = currentUser.matches || [];
+
+        // Fetch users who have mutually liked each other
+        const matches = await users.find({
+            user_id: { $in: currentUserMatches },
+            matches: userId // Ensure mutual matching
+        }).toArray();
+
+        res.json(matches);
+    } catch (error) {
+        console.error("Failed to fetch matches:", error);
+        res.status(500).send("An error occurred while fetching matches.");
+    } finally {
+        await client.close();
+    }
+});
 
 app.listen(PORT, ()=> console.log('Server running on PORT ' + PORT))
 

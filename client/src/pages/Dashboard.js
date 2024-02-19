@@ -11,6 +11,7 @@ const Dashboard = () => {
     const [genderedUsers, setGenderedUsers ] = useState([])
     const [lastDirection, setLastDirection] = useState()
     const [ cookies, setCookie, removeCookie ] = useCookies(['user'])
+    const [shuffledUsers, setShuffledUsers] = useState([]);
 
 
     const userId = cookies['UserId']
@@ -33,6 +34,9 @@ const Dashboard = () => {
           params: { gender: user?.gender_interest}
         })
         setGenderedUsers(response.data)
+        const matchedUserIds = user?.matches || [];
+        const filtered = response.data.filter(genderedUser => !matchedUserIds.includes(genderedUser.user_id));
+        setShuffledUsers(shuffleArray(filtered));
 
       } catch (error) {
         console.log(error)
@@ -49,10 +53,10 @@ const Dashboard = () => {
     }, [])
 
     useEffect(() => {
-    if (user) {
+    if (user && shuffledUsers.length === 0) {
       getGenderedUsers()
     }
-    }, [user])
+    }, [user, shuffledUsers.length])
       
 
 
@@ -89,11 +93,17 @@ const Dashboard = () => {
           console.log(name + ' left the screen!')
         }
 
-        const matchedUserIds = user?.matches.map(({ user_id }) => user_id).concat(userId)
+        const matchedUserIds = user?.matches || [];
 
-        const filteredGenderedUsers = genderedUsers?.filter(
-          genderedUser => !matchedUserIds.includes(genderedUser.usr_id)
-        )
+        const shuffleArray = (array) => {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+            }
+            return array;
+        }
+
+        
       
         return (
           <>
@@ -107,7 +117,7 @@ const Dashboard = () => {
                 <div className="swipe-container">
                     <div className='card-container'>
                         
-                        {filteredGenderedUsers?.map((genderedUser) =>
+                        {shuffledUsers?.map((genderedUser) =>
                             <TinderCard className='swipe' 
                             key={genderedUser.user_id} onSwipe={(dir) => swiped(dir, genderedUser.user_id)} 
                             onCardLeftScreen={() => outOfFrame(genderedUser.user_id)}>
