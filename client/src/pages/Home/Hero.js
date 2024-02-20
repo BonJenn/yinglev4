@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Home.module.css'; // Ensure this path is correct
+import styles from './Hero.module.css'; // Ensure this path is correct
 
 function Hero() {
     return (

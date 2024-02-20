@@ -6,6 +6,7 @@ import AuthModal from "../../components/AuthModal"
 import styles from './Home.module.css'
 import { useState } from 'react'
 import { useCookies } from 'react-cookie'
+import homeImage from '../../images/yingle_home_image.png'
 
 const Home = () => {
 
@@ -52,6 +53,7 @@ const Home = () => {
 
                 <div className={styles.home_column2}>
                     <div className={styles.home_filler_img}>
+                        <img src={homeImage} alt="Yingle home image" />
 
                     </div>
                 </div>

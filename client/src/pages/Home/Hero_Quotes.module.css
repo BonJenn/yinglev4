@@ -12,20 +12,22 @@
 
 
 .hero_quotes {
+    display: flex;
+    flex-direction: row;
     height: auto;
-    width: 100%;
     background-color: black;
     color: var(--primary-light);
-    height: 300px;
-    padding: 50px;
-
+    padding: 80px;
+    gap: 50px;
+  
 
     
   }
 
 
 
-  .quote_1 .quote_2 {
-    font-family: 'Marcellus'
+  .quote_1, .quote_2 {
+    font-family: 'Marcellus'; /* Added semicolon */
+    font-size: 15px;
   }
   
