@@ -1,5 +1,12 @@
 /*------ Homepage -----*/
 
+:root {
+  --primary: #05a8e7;
+  --primary-content: #ecfaff;
+  --primary-light: #25bffa;
+  --primary-dark: #0484b5;
+}
+
 .home {
     overflow-y:auto; 
     margin-top: 10vh;
@@ -21,19 +28,23 @@
   }
 }
 
-  .home_column1 {
+.primary-button {
+  background-color: var(--primary);
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  color: var(--primary-content);
+  font-weight: bold;
+  font-size: 15px;
 
-  }
-
-  .home_column2 {
-
-  }
+}
 
   .home_filler_img {
     height: 400px;
     width: 400px;
-    background-color: red;
+    background-color: var(--primary);
     margin: 20px;
+    border-radius: 10px;
   }
   
   .hero-sections {

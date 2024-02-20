@@ -1,11 +1,31 @@
+/* Readex Pro */
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap');
+/* Krona One */
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Readex+Pro:wght@160..700&display=swap');
+/* Cormorant */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Krona+One&family=Readex+Pro:wght@160..700&display=swap');
+/*Marcellus */
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+
+
+
+
+
 .hero_quotes {
     height: auto;
-    width: auto;
+    width: 100%;
     background-color: black;
-    color: purple;
+    color: var(--primary-light);
     height: 300px;
-    margin: 30px;
-    font-family: 'Marcellus'
+    padding: 50px;
+
+
     
+  }
+
+
+
+  .quote_1 .quote_2 {
+    font-family: 'Marcellus'
   }
   

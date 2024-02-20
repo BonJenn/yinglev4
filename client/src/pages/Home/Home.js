@@ -44,7 +44,8 @@ const Home = () => {
             <div className={styles.home}>
                 <div className={styles.home_column1}>
                     <h1 className="primary-title">The World's Most Sought-After Singles</h1>
-                    <button className ="primary-button" onClick={handleClick}>
+                    <button className={styles['primary-button']} onClick={handleClick}>
+
                         {authToken ? 'Signout' : 'Create Account'}
                     </button>
                 </div>
