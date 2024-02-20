@@ -5,6 +5,7 @@
     padding: 20px;
     height: auto;
     overflow-y: auto;
+    background-color: white;
   }
 
  .matchesDisplay img {
@@ -12,4 +13,10 @@
     height: 40px;
     border-radius: 50%;
 
+  }
+
+  .imgContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }

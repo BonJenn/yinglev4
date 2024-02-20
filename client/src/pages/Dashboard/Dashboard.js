@@ -122,9 +122,12 @@ const Dashboard = () => {
                               key={genderedUser.user_id} onSwipe={(dir) => swiped(dir, genderedUser.user_id)} 
                               onCardLeftScreen={() => outOfFrame(genderedUser.user_id)}>
                               
-                              <div style={{ backgroundImage: 'url(' + genderedUser.url + ')', height: '500px', width: '350px' }} 
-                              className='card'>
-                                <h3>{genderedUser.first_name}</h3>
+                              <div style={{ backgroundImage: 'url(' + genderedUser.url + ')'}} 
+                              className={styles.card}>
+                                <div className={styles.cardName}>
+                                  <h3>{genderedUser.first_name}</h3>
+                                </div>
+                                
                               </div>
                             </TinderCard>
                         )}

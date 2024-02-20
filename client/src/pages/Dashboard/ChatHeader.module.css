@@ -1,10 +1,15 @@
+.chatContainer {
+  width: 100%;
+}
+
 .chatHeaderContainer {
   
     height: 100px;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--primary);
+   
+    background-color: orange;
+    padding: 40px;
   }
   
   .chatHeaderContainer .imgContainer {

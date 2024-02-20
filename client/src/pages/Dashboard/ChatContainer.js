@@ -2,6 +2,7 @@ import ChatHeader from './ChatHeader'
 import MatchesDisplay from './MatchesDisplay'
 import ChatDisplay from './ChatDisplay'
 import { useState } from 'react'
+import styles from './ChatContainer.module.css'
 
 const ChatContainer = ({user}) => {
     const [ clickedUser, setClickedUser ] = useState(null)
@@ -10,12 +11,12 @@ const ChatContainer = ({user}) => {
   
 
     return (
-        <div className="chat-container">
+        <div className={styles.chatContainer}> {/* Use the imported styles */}
             <ChatHeader user={user}/>
 
             <div>
-                <button className="option" onClick={() => setClickedUser(null)}>Matches</button>
-                <button className="option" disabled={!clickedUser}>Chat</button>
+                <button className={styles.option} onClick={() => setClickedUser(null)}>Matches</button>
+                <button className={styles.option} disabled={!clickedUser}>Chat</button>
             </div>
 
         {!clickedUser && <MatchesDisplay matches={user.matches} setClickedUser={setClickedUser}/>}

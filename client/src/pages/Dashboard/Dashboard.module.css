@@ -1,4 +1,3 @@
-
 :root {
     --primary: #05a8e7;
     --primary-content: #ecfaff;
@@ -58,19 +57,30 @@
     height: 650px;
   }
   
-  .card {
-    background-color: #fff;
-    width: 400px;
-    height: 650px;
-    height: 300px;
-    border-radius: 30px;
-    background-size: cover;
-    background-position: center;
-  }
+.card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 500px;
+  width: 350px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: white;
+}
+
+.card .cardName {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  background-color: pink;
+  color: white;
+}
   
-  .card h3 {
-    margin-top: 0;
-  }
+
   
   .dashboard .swipe-info {
     position: absolute;
