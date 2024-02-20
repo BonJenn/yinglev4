@@ -19,7 +19,7 @@ const MatchesDisplay = ({ setClickedUser }) => {
                 console.error("Error fetching matches:", error);
             }
         };
-        const intervalId = setInterval(fetchMatches, 500); // Poll every 5000 milliseconds (5 seconds)
+        const intervalId = setInterval(fetchMatches, 100); // Poll every 5000 milliseconds (5 seconds)
 
         return () => clearInterval(intervalId); // Clear interval on component unmount
     }, [userId]);
