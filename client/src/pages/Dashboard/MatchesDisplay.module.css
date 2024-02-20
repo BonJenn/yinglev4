@@ -1,0 +1,15 @@
+.matchesDisplay {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    height: auto;
+    overflow-y: auto;
+  }
+
+ .matchesDisplay img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+  }

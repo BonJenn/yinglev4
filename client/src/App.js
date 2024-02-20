@@ -1,6 +1,6 @@
 import Home from './pages/Home/Home'
 import Onboarding from './pages/Onboarding'
-import Dashboard from './pages/Dashboard'
+import Dashboard from './pages/Dashboard/Dashboard'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useCookies } from 'react-cookie';
 

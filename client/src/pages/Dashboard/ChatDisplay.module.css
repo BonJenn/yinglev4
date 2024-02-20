@@ -1,0 +1,23 @@
+/* ---- Chat Display ---- */
+
+.chatDisplay {
+  padding: 20px;
+  height: 60vh;
+  overflow-y: auto;
+}
+
+
+
+.chatDisplay img {
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 10px;
+  width: 50px; /* Set width */
+  height: 50px; /* Set height */
+}
+
+.chatInput {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}

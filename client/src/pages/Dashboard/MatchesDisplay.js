@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
+import style from './MatchesDisplay.module.css';
 
 const MatchesDisplay = ({ setClickedUser }) => {
     const [potentialMatches, setPotentialMatches] = useState([]);
@@ -26,11 +27,11 @@ const MatchesDisplay = ({ setClickedUser }) => {
     
 
     return (
-        <div className="matches-display">
+        <div className={style.matchesDisplay}>
             {potentialMatches.length > 0 ? (
                 potentialMatches.map((match, index) => (
-                    <div key={index} className="match-card" onClick={() => setClickedUser(match)}>
-                        <div className="img-container">
+                    <div key={index} className={style.matchCard} onClick={() => setClickedUser(match)}>
+                        <div className={style.imgContainer}>
                             <img src={match.url} alt={`${match.first_name} profile`} />
                         </div>
                         <h3>{match.first_name}</h3>

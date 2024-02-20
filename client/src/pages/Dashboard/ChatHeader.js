@@ -1,4 +1,5 @@
 import { useCookies } from 'react-cookie';
+import styles from './ChatHeader.module.css'; // Import the CSS module
 
 const ChatHeader = ({ user }) => {
     // Destructure the useCookies hook to get the cookies object and the removeCookie function
@@ -12,15 +13,14 @@ const ChatHeader = ({ user }) => {
     };
 
     return (
-        <div className="chat-header-container">
-            <div className="profile">
-                <div className="img-container">
+        <div className={styles.chatHeaderContainer}> {/* Use the style from the CSS Module */}
+            <div className={styles.profile}> {/* Use the style from the CSS Module */}
+                <div className={styles.imgContainer}> {/* Use the style from the CSS Module */}
                     {user && <img src={user.url} alt={"photo of " + user.first_name}/>}
                 </div> 
                 <h3>{user && user.first_name}</h3>   
             </div> 
-            {/* Fix the onClick event to be properly assigned to an element */}
-            <h3 className="log-out-icon" onClick={logout}>Log out</h3>
+            <h3 className={styles.logOutIcon} onClick={logout}>Log out</h3> {/* Use the style from the CSS Module */}
         </div>
     );
 };

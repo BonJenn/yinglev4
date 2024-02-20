@@ -2,9 +2,9 @@ import React from 'react';
 import TinderCard from 'react-tinder-card';
 import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie'
-import ChatContainer from '../components/ChatContainer'
+import ChatContainer from './ChatContainer'
 import axios from 'axios'
-
+import styles from './Dashboard.module.css'; // Step 2: Import the CSS module
 
 const Dashboard = () => {
     const [user, setUser] = useState(null)
@@ -109,16 +109,16 @@ const Dashboard = () => {
           <>
           { user &&
 
-            <div className="dashboard">
+            <div className={styles.dashboard}>
                 
                  <ChatContainer user={user}/>
      
        
-                <div className="swipe-container">
-                    <div className='card-container'>
+                <div className={styles.swipeContainer}>
+                    <div className={styles.cardContainer}>
                         
                         {shuffledUsers?.map((genderedUser) =>
-                            <TinderCard className='swipe' 
+                            <TinderCard className={styles.swipe} 
                             key={genderedUser.user_id} onSwipe={(dir) => swiped(dir, genderedUser.user_id)} 
                             onCardLeftScreen={() => outOfFrame(genderedUser.user_id)}>
                             <div style={{ backgroundImage: 'url(' + genderedUser.url + ')' }} 

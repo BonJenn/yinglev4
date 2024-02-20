@@ -2,6 +2,7 @@ import Chat from './Chat'
 import ChatInput from './ChatInput'
 import axios from 'axios'
 import { useEffect, useState } from 'react';
+import styles from './ChatDisplay.module.css'; // Import the CSS module
 
 const ChatDisplay = ({ user, clickedUser }) => {
     const userId = user?.user_id
@@ -77,15 +78,15 @@ const ChatDisplay = ({ user, clickedUser }) => {
     
 
     return (
-        <>
-        <Chat descendingOrderMessages={descendingOrderMessages}/>
-        <ChatInput
-            user={user}
-            clickedUser={clickedUser}
-            getUsersMessages={getUsersMessages}
-            getClickedUsersMessages={getClickedUsersMessages}
-        />
-        </>
+        <div className={styles.chatDisplay}> {/* Use a class from your CSS Module */}
+            <Chat descendingOrderMessages={descendingOrderMessages}/>
+            <ChatInput
+                user={user}
+                clickedUser={clickedUser}
+                getUsersMessages={getUsersMessages}
+                getClickedUsersMessages={getClickedUsersMessages}
+            />
+        </div>
     )
 }
 
