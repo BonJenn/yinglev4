@@ -10,8 +10,8 @@
 
 .dashboard {
     display: flex;
-    flex-direction: column;
-    background-color: red;
+    flex-direction: row;
+    background-color: var(--primary-content);
     justify-content: center;
     align-items: center;
   }
@@ -76,8 +76,11 @@
   width: 100%;
   text-align: center;
   padding: 10px;
-  background-color: pink;
-  color: white;
+}
+
+.cardName {
+  background-color: white;
+  color: rgb(0, 0, 0);
 }
   
 

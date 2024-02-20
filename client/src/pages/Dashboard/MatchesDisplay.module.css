@@ -3,6 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 20px;
+    width: auto;
     height: auto;
     overflow-y: auto;
     background-color: white;

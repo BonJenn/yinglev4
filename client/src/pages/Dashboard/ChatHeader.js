@@ -14,12 +14,15 @@ const ChatHeader = ({ user }) => {
 
     return (
         <div className={styles.chatHeaderContainer}> {/* Use the style from the CSS Module */}
+            
             <div className={styles.profile}> {/* Use the style from the CSS Module */}
                 <div className={styles.imgContainer}> {/* Use the style from the CSS Module */}
                     {user && <img src={user.url} alt={"photo of " + user.first_name}/>}
+                    <h3>{user && user.first_name}</h3>   
                 </div> 
-                <h3>{user && user.first_name}</h3>   
+                
             </div> 
+            
             <h3 className={styles.logOutIcon} onClick={logout}>Log out</h3> {/* Use the style from the CSS Module */}
         </div>
     );

@@ -1,20 +1,27 @@
-.chatContainer {
-  width: 100%;
-}
 
 .chatHeaderContainer {
+    box-sizing: border-box;
   
-    height: 100px;
+    height: 200px;
     width: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
    
-    background-color: orange;
-    padding: 40px;
+    background-color: white;
+    padding: 50px;
+    margin: 10px;
   }
   
+
+  /*Profile Picture and Username in Dashboard Header */
   .chatHeaderContainer .imgContainer {
-   
     border-radius: var(--border-radius-half);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
     margin: 10px;
   }
