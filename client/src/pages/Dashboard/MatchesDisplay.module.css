@@ -3,6 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 20px;
+    gap: 20px; /* Adjust this value as needed to create space between matches */
     width: auto;
     height: auto;
     overflow-y: auto;
