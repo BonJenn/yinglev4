@@ -3,6 +3,7 @@
 .chatDisplay {
   padding: 20px;
   height: 60vh;
+  width: 100%;
   overflow-y: auto;
   background-color: white;
 }

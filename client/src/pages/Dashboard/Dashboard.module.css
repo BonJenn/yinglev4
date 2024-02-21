@@ -15,15 +15,29 @@
     justify-content: center;
     align-items: center;
     justify-content: space-around;
+    
+  }
+
+  .dashboardLeftSide {
+    width: 50%;
+    margin: 20px;
+    border: solid 10px purple;
+  }
+
+  .dashboardRightSide {
+    width: 50%;
+    margin: 20px;
+    bordeR: solid 10px purple;
   }
   
 .swipeContainer {
-    width: 600px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 600px;
+    
   }
 
   .cardContainer {
@@ -31,7 +45,7 @@
     align-items: center;
     justify-content: center;
     height: 500px;
-    width: 500px;
+    width: 100%;
     padding: 20px;
   }
 
@@ -59,19 +73,19 @@
   flex-direction: row;
   position: relative;
   height: 300px;
-  width: 600px;
+  width: 700px; /* Adjusted from 100% to 80% */
   align-items: center;
   border-radius: 30px;
 }
 
 .cardPhoto {
-  width: 40%;
+  width: 50%; /* Remains the same, but will be wider due to the .card's increased width */
   height: 500px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: white;
-  border-radius: 30px 0px 30px 0px;
+  border-radius: 30px 0px 0px 30px;
 }
 
 .cardName {
@@ -87,6 +101,8 @@
   padding-left: 20px;
   box-sizing: border-box;
   text-align: center;
+  border-radius: 0px 30px 30px 0px;
+  width: 50%; /* Adjusted to ensure it fills the space appropriately, consider adjusting based on design needs */
 }
   
 

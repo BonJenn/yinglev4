@@ -24,6 +24,7 @@ const Dashboard = () => {
         setUser(response.data)
       } catch (error) {
         console.log(error)
+        console.log(user + "real")
       }
     }
 
@@ -107,49 +108,46 @@ const Dashboard = () => {
       
         return (
           <>
-          { user &&
-
+          { user && (
             <div className={styles.dashboard}>
-
               <div className={styles.dashboardLeftSide}>
-
-                  <ChatContainer user={user}/>
-
+                <ChatContainer user={user} />
               </div>
-                
-                 
-     
-       
+
+              <div className={styles.dashboardRightSide}>
                 <div className={styles.swipeContainer}>
-                    <div className={styles.cardContainer}>
-                        
-                        {shuffledUsers?.map((genderedUser) =>
-                            <TinderCard className={styles.swipe} 
-                              key={genderedUser.user_id} onSwipe={(dir) => swiped(dir, genderedUser.user_id)} 
-                              onCardLeftScreen={() => outOfFrame(genderedUser.user_id)}>
-
-
-                              <div className={styles.card}>
-                                <div style={{ backgroundImage: 'url(' + genderedUser.url + ')'}} 
-                                 className={styles.cardPhoto} aria-label={`Profile of ${genderedUser.first_name}`}>
-                                </div>
-                                <div className={styles.cardName}>
-                                  <h3>{genderedUser.first_name}</h3>
-                                </div>
-                              </div>
-                              
-                            </TinderCard>
-                        )}
-                        <div className="swipe-info">
-                            {lastDirection ? <p>You swiped {lastDirection}</p> : <p/>}
+                  <div className={styles.cardContainer}>
+                    {shuffledUsers?.map((genderedUser) => (
+                      <TinderCard
+                        className={styles.swipe}
+                        key={genderedUser.user_id}
+                        onSwipe={(dir) => swiped(dir, genderedUser.user_id)}
+                        onCardLeftScreen={() => outOfFrame(genderedUser.user_id)}
+                      >
+                        <div className={styles.card}>
+                          <div
+                            style={{ backgroundImage: `url(${genderedUser.url})` }}
+                            className={styles.cardPhoto}
+                            aria-label={`Profile of ${genderedUser.first_name}`}
+                          ></div>
+                          <div className={styles.cardName}>
+                            <h3>{genderedUser.first_name}</h3>
+                          </div>
                         </div>
-                        
+                      </TinderCard>
+                    ))}
+                    <div className={styles.swipeInfo}>
+                      {lastDirection ? <p>You swiped {lastDirection}</p> : null}
                     </div>
-                </div> 
-            </div>}
-            </>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          </>
         )
       }
 
 
 export default Dashboard;
+
