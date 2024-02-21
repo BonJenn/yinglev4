@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
-
+import styles from './ChatDisplay.module.css';
 
 const ChatInput = ({user, clickedUser, getUsersMessages, getClickedUsersMessages}) => {
     const [textArea, setTextArea] = useState("")
@@ -27,9 +27,9 @@ const ChatInput = ({user, clickedUser, getUsersMessages, getClickedUsersMessages
     }
 
     return (
-        <div className="chat-input">
-            <textarea value={textArea} onChange={(e) => setTextArea(e.target.value)}/>
-            <button className="secondary-button" onClick={addMessage}>Submit</button>
+        <div className={styles.chatInput}>
+            <textarea className={styles.textArea} value={textArea} onChange={(e) => setTextArea(e.target.value)}/>
+            <button className={styles.secondaryButton} onClick={addMessage}>Submit</button>
         </div>
     )
 }
