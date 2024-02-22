@@ -1,8 +1,9 @@
 :root {
-    --primary: #05a8e7;
-    --primary-content: #ecfaff;
-    --primary-light: #25bffa;
-    --primary-dark: #0484b5;
+    --primary: #eff566;
+    --primary-content:#565406;
+    --primary-light: #f8f596;
+    --primary-dark: #f2ed36;
+    ;
   }
 
 
@@ -22,9 +23,10 @@
     height: 1000px;
     width: 30%;
     margin: 20px;
-    border-right: solid 5px rgb(126, 126, 126);
+
     padding: 10px;
-    background-color: var(--primary-content);
+    background-color: var(--primary-light);
+    border-radius: 30px;
   }
 
   .dashboardRightSide {
@@ -78,14 +80,33 @@
 
 .card {
   display: flex;
-  flex-direction: row;
+  flex-direction: row; /* Default layout */
   position: relative;
   height: 400px;
-  max-width: 1000px; /* Adjusted from 900px to make it wider */
-  min-width: 700px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
   align-items: center;
-  border-radius: 30px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Adjusted shadow for more prominence around the entire card */
+
+
+  max-width: calc(100% - 240px); /* Example max-width, adjust as needed */
+  min-width: 700px; /* Minimum width before it starts to shrink */
+}
+
+@media (max-width: 1070px) {
+  .card {
+    flex-direction: column; /* Switch to column layout */
+  }
+  .card .cardPhoto {
+    width: 50%; /* Ensure children take full width of the card */
+    border-radius: 30px 30px 0px 0px; /* Adjust as needed for .cardPhoto at smaller screens */
+  }
+
+  .card .cardName {
+    width: 50%;
+    border-radius: 0px 0px 30px 30px; /* Ensuring it's applied */
+    background-color: var(--primary); /* For visual confirmation */
+  }
 }
 
 .cardPhoto {
@@ -104,7 +125,7 @@
   justify-content: center;
   align-items: center;
   flex: 1;
-  background-color: var(--primary-content);
+  background-color: var(--primary);
   height: 500px;
   color: rgb(0, 0, 0);
   font-size: 30px;

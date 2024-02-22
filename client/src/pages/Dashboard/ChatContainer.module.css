@@ -1,13 +1,20 @@
+:root {
+  --primary: #eff566;
+  --primary-content: #535606;
+  --primary-light: #f4f896;
+  --primary-dark: #eaf236;
+}
+
+
+
 /* --- Chat Container ----- */
 
 
 .chatContainer {
-  
-    box-shadow: rgba(0,0,0,0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     width: 100%;
     text-align: left;
     z-index: 1;
+    border-radius: 30px;
   }
   
 
@@ -27,6 +34,7 @@
     font-size: var(--font-size-large);
     margin: 2px;
     padding: 10px;
+    border-bottom: solid var(--primary-dark) 10px;
   }
   
   .chat-container .option:disabled {
@@ -47,17 +55,20 @@
     align-items: center;
     justify-content: center;
     width: auto;
-    background-color: red;
+    
   }
 
   .chatMatchButtons button {
     height: 50px;
-    width: 300px;
+    max-width: 300px;
+    width: 100%;
     font-size: 30px;
-    background-color: var(--primary-content);
+    background-color: var(--primary-light);
+    color: black;
     border: none;
     margin: 10px;
     padding: 10px;
     width: 100%;
-    background-color: pink;
+    border-radius: 30px;
+    
   }
