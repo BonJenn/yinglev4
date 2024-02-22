@@ -24,10 +24,37 @@
     
   }
 
+@media (max-width: 820px) {
+  .hero_quotes {
+    flex-direction: column;
+  }
 
+    /* Animation for the first quote */
+    .quote_1 {
+        animation: slideDown 0.5s forwards;
+    }
+
+    /* Animation for the second quote */
+    .quote_2 {
+        animation: slideDown 0.5s forwards;
+        
+    }
+}
 
   .quote_1, .quote_2 {
     font-family: 'Marcellus'; /* Added semicolon */
     font-size: 15px;
   }
+
+/* Keyframes for sliding down animation */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
   

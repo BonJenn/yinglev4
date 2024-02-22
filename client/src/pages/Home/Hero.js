@@ -18,7 +18,9 @@ function Hero() {
                     <div className={styles['hero_info_man']}>
                         <h2 className={styles['hero_text_title_2']}>For The Guys...</h2>
                         <h3 className={styles['hero_text_description']}>We've implemented a system where men who demonstrate exceptional economic security are invited to join our exclusive community. 
-                            <br />With our female members being carefully approved for their exceptional qualities, 
+                            <br />
+                            <br />
+                            With our female members being carefully approved for their exceptional qualities, 
                             we aim to match them with partners who share above-average economic standing, ensuring a mutually rewarding dating experience.</h3>
                     </div>
                 </div>

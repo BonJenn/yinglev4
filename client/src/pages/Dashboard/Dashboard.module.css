@@ -15,12 +15,13 @@
     background-color: white;
     justify-content: center;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: auto;
     
   }
 
   .dashboardLeftSide {
-    height: 1000px;
+    height: 800px;
     width: 30%;
     margin: 20px;
 
@@ -37,7 +38,7 @@
     width: 70%;
     margin: 20px;
     height: 800px;
-    border: solid 10px purple;
+    /*border: solid 10px purple;*/
   }
   
 .swipeContainer {

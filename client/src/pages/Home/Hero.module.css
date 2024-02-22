@@ -1,7 +1,8 @@
 .hero-sections {
     display: flex;
     flex-direction: column;
-   
+    
+
    
   }
   
@@ -15,6 +16,7 @@
     margin-top: 30px;
     height: auto;
     background-color: var(--primary);
+    color: var(--primary-content);
     width: 45%;
     align-self: flex-start;
   }
@@ -22,7 +24,8 @@
   .hero_section_man {
     padding: 70px;
     height: auto;
-    background-color: var(--primary-dark);
+    background-color: var(--primary);
+    color: var(--primary-content);
     width: 45%;
     align-self: flex-end;
   }
@@ -40,23 +43,20 @@
     margin: 0; /* Removes default margins */
   }
   
-  .hero_section .hero_text_main {
-    color: white;
-  }
-  
+ 
   .hero_text_main {
     font-family: 'Cormorant';
   }
   
   .hero_text_title_1, .hero_text_title_2 {
-    color: white;
-    font-size: 50px;
+    color: var(--primary-content);
+    font-size: 60px;
     font-family: 'Cormorant';
     margin-bottom: 10px; /* Reduce the bottom margin to bring them closer */
   }
   
   .hero_text_description {
-    color: white;
+    color: var(--primary-content);
     font-family: 'Marcellus';
     line-height: 3;
     margin-top: 10px; /* Reduce the top margin to bring it closer to the titles */

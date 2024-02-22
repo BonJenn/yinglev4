@@ -1,11 +1,13 @@
 /*------ Homepage -----*/
 
 :root {
-  --primary: #05a8e7;
-  --primary-content: #ecfaff;
-  --primary-light: #25bffa;
-  --primary-dark: #0484b5;
+  --primary: #eff566;
+  --primary-content: #535606;
+  --primary-light: #f4f896;
+  --primary-dark: #eaf236;
 }
+
+
 
 .home {
     overflow-y:auto; 
@@ -18,7 +20,6 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-   
   }
 
   /* Media query for screens smaller than 820px */
@@ -26,6 +27,12 @@
   .home {
     flex-direction: column; /* Switch to column layout */
   }
+}
+
+.primaryTitle {
+  color: var(--primary-content);
+  font-size: 60px;
+  margin: 30px;
 }
 
 .primary-button {
@@ -44,83 +51,21 @@
   background-color: var(--primary-dark);
 }
 
- .home img {
+.home img {
   width: 450px;
- }
-  
-  .hero-sections {
-    display: flex;
-    flex-direction: column;
-   
-  }
-  
-  .hero_section_women, .hero_section_man {
-    width: 50%; /* Example width, adjust as needed */
-    padding: 100px;
-    padding-top: 50px;
-  }
-  
-  .hero_section_women {
-    margin-top: 30px;
-    height: auto;
-    background-color: black;
-    width: 45%;
-    align-self: flex-start;
-  }
-  
-  .hero_section_man {
-    padding: 70px;
-    height: auto;
-    background-color: black;
-    width: 45%;
-    align-self: flex-end;
-  }
-  
-  .hero_info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .hero_section .hero_text_main,
-  .hero_section .hero_text_title_1,
-  .hero_section .hero_text_title_2,
-  .hero_section .hero_text_description {
-    margin: 0; /* Removes default margins */
-  }
-  
-  .hero_section .hero_text_main {
-    color: white;
-  }
-  
-  .hero_text_main {
-    font-family: 'Cormorant';
-  }
-  
-  .hero_text_title_1, .hero_text_title_2 {
-    color: white;
-    font-size: 50px;
-    font-family: 'Cormorant';
-    margin-bottom: 10px; /* Reduce the bottom margin to bring them closer */
-  }
-  
-  .hero_text_description {
-    color: white;
-    font-family: 'Marcellus';
-    line-height: 3;
-    margin-top: 10px; /* Reduce the top margin to bring it closer to the titles */
-  }
-  
-  .hero_quotes {
-    height: auto;
-    width: auto;
-    background-color: black;
-    color: purple;
-    height: 300px;
-    margin: 30px;
-    font-family: 'Marcellus'
-    
-  }
+  border-radius: 30px;
+  margin: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Add shadow */
+  opacity: 0; /* Start with the image being transparent */
+  animation: fadeInAnimation ease 2s; /* Apply fade-in animation */
+  animation-fill-mode: forwards; /* Make sure the image stays visible after animation */
+}
+
+/* Keyframes for fade-in animation */
+@keyframes fadeInAnimation {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
   
   
   /* ----- Homepage Footer ------ */
