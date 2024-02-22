@@ -8,7 +8,26 @@
     height: auto;
     overflow-y: auto;
     background-color: white;
+    border-radius: 30px;
   }
+
+.matchesDisplay::-webkit-scrollbar {
+  width: 8px; /* Adjust the width of the scrollbar */
+}
+
+.matchesDisplay::-webkit-scrollbar-track {
+  background: var(--primary); /* Track color */
+}
+
+.matchesDisplay::-webkit-scrollbar-thumb {
+  background: var(--primary-dark);
+  margin: 1px;
+  border-radius: 10px; /* Handle color */
+}
+
+.matchesDisplay::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark); /* Handle color on hover */
+}
 
  .matchesDisplay img {
     width: 40px;
@@ -21,4 +40,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+  }
+
+  .imgContainer h3 {
+    text-align: center;
   }
