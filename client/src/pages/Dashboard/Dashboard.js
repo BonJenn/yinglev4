@@ -110,10 +110,12 @@ const Dashboard = () => {
           <>
           { user && (
             <div className={styles.dashboard}>
+              {/*Dashboard Left Side */}
               <div className={styles.dashboardLeftSide}>
                 <ChatContainer user={user} />
               </div>
 
+              {/*Dashboard Right Side */}
               <div className={styles.dashboardRightSide}>
                 <div className={styles.swipeContainer}>
                   <div className={styles.cardContainer}>

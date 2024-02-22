@@ -20,14 +20,28 @@
     
   }
 
+  @media (max-width: 768px) {
+    .dashboard {
+      flex-direction: column;
+      justify-content: normal; /* Adjust as needed */
+    }
+
+    .dashboard .dashboardLeftSide {
+      height: auto;
+      width: 100%;
+      background-color: red;
+    }
+  }
+
   .dashboardLeftSide {
     height: 800px;
     width: 30%;
     margin: 20px;
 
     padding: 10px;
-    background-color: var(--primary-light);
+    background-color: red;
     border-radius: 30px;
+
   }
 
   .dashboardRightSide {
@@ -112,6 +126,7 @@
     background-color: var(--primary); /* For visual confirmation */
   }
 }
+
 
 .cardPhoto {
   width: 50%; /* Remains the same, but will be wider due to the .card's increased width */

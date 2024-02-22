@@ -1,19 +1,23 @@
 
 .chatHeaderContainer {
- 
-  
-    height: 50px;
-    width: auto;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: rgb(97, 255, 234);
     padding: 50px;
     margin: 10px;
     border-radius: 20px;
   }
-  
+
+  @media (max-width: 768px) {
+    .chatHeaderContainer {
+      margin-right: auto;
+      align-items: flex-start;
+    }
+    
+  }
 
   /*Profile Picture and Username in Dashboard Header */
   .chatHeaderContainer .imgContainer {
@@ -24,7 +28,17 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-   
+  }
+
+  @media(max-width: 768px) {
+    .chatHeaderContainer .imgContainer {
+      height: auto;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: pink;
+    }
   }
   
   .chatHeaderContainer img {
