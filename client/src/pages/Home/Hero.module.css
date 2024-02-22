@@ -62,3 +62,11 @@
     margin-top: 10px; /* Reduce the top margin to bring it closer to the titles */
   }
   
+.fadeIn {
+  animation: fadeInAnimation 0.5s forwards;
+}
+
+@keyframes fadeInAnimation {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
