@@ -4,9 +4,10 @@ import Hero_Quotes from './Hero_Quotes'
 import Footer from '../../components/Footer'
 import AuthModal from "../../components/AuthModal"
 import styles from './Home.module.css'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react' // Modified to import useEffect and useRef
 import { useCookies } from 'react-cookie'
 import homeImage from '../../images/yingle_home_image.jpeg'
+import VanillaTilt from 'vanilla-tilt';
 
 const Home = () => {
 
@@ -32,6 +33,25 @@ const Home = () => {
         
     }
 
+    const tiltRef = useRef(null); // Added useRef for the image tilt effect
+
+    useEffect(() => {
+        // Apply VanillaTilt to the element referenced by tiltRef
+        VanillaTilt.init(tiltRef.current, {
+            max: 15,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.5,
+        });
+
+        // Correct cleanup function
+        return () => {
+            if (tiltRef.current) {
+                tiltRef.current.vanillaTilt.destroy();
+            }
+        };
+    }, []);
+
 
     return (
         <div className={`overlay ${showModal ? 'active' : ''}`}>
@@ -52,8 +72,9 @@ const Home = () => {
                 </div>
 
                 <div className={styles.home_column2}>
-                    <div className={styles.home_filler_img}>
-                        <img src={homeImage} alt="Yingle home image" />
+                    <div className={styles.homeFillerImg}>
+                        {/* Added the ref to the img element */}
+                        <img ref={tiltRef} src={homeImage} alt="Yingle home image" />
 
                     </div>
                 </div>

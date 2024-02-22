@@ -11,8 +11,8 @@
 
 .home {
     overflow-y:auto; 
-    margin-top: 10vh;
-    margin-bottom: 10vh;
+    margin: 5vh;
+    padding: 5vh;
     min-height: auto;
     height: auto;
     display: flex;
@@ -20,6 +20,8 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: #f4f896;
+    border-radius: 30px;
   }
 
   /* Media query for screens smaller than 820px */
@@ -59,6 +61,7 @@
   opacity: 0; /* Start with the image being transparent */
   animation: fadeInAnimation ease 2s; /* Apply fade-in animation */
   animation-fill-mode: forwards; /* Make sure the image stays visible after animation */
+  transition: transform 0.3s ease; /* Smooth transition for transform property */
 }
 
 /* Keyframes for fade-in animation */
