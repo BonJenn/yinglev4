@@ -1,6 +1,7 @@
 import Nav from '../../components/Nav'
 import Hero from './Hero'
 import Hero_Quotes from './Hero_Quotes'
+import Home_Images from './Home_Images'
 import Footer from '../../components/Footer'
 import AuthModal from "../../components/AuthModal"
 import styles from './Home.module.css'
@@ -86,7 +87,9 @@ const Home = () => {
                
             </div>
             <Hero/>
+            <Home_Images imageToShow="image1"/>
             <Hero_Quotes/>
+            <Home_Images imageToShow="image2"/>
             <Footer/>
         </div>
     )
