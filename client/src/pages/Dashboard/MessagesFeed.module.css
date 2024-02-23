@@ -1,0 +1,13 @@
+.messagesFeed {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    background-color: red;
+    border-radius: 30px;
+    margin: 30px;
+}
+
+.message p {
+    color: white;
+    font-size: 12px;
+}

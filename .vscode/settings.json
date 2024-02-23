@@ -11,5 +11,6 @@
     "audioCues.terminalQuickFix": "off",
     "audioCues.notebookCellCompleted": "off",
     "audioCues.lineHasInlineSuggestion": "off",
-    "audioCues.chatResponsePending": "off"
+    "audioCues.chatResponsePending": "off",
+    "liveServer.settings.port": 5501
 }

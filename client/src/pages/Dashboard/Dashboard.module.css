@@ -16,8 +16,7 @@
     justify-content: center;
     align-items: center;
     justify-content: space-between;
-    width: auto;
-    
+    width: auto;  
   }
 
   @media (max-width: 768px) {
@@ -37,12 +36,12 @@
   }
 
   .dashboardLeftSide {
-    height: 800px;
     width: 30%;
     margin: 20px;
     padding: 10px;
     background-color: var(--primary-light);
     border-radius: 30px;
+    height: 1000px;
   }
 
   .dashboardRightSide {

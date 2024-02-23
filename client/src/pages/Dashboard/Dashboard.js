@@ -2,6 +2,7 @@ import React from 'react';
 import TinderCard from 'react-tinder-card';
 import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie'
+import MessagesFeed from './MessagesFeed'; // Corrected import statement for MessagesFeed
 import ChatContainer from './ChatContainer'
 import axios from 'axios'
 import styles from './Dashboard.module.css'; // Step 2: Import the CSS module
@@ -113,6 +114,8 @@ const Dashboard = () => {
               {/*Dashboard Left Side */}
               <div className={styles.dashboardLeftSide}>
                 <ChatContainer user={user} />
+                {user && <MessagesFeed user={user} />}
+
               </div>
 
               {/*Dashboard Right Side */}

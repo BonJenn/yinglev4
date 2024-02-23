@@ -278,9 +278,6 @@ app.get('/messages', async (req, res) => {
     }
 })
 
-
-
-
 app.post('/message', async (req, res) => {
     const client = new MongoClient(uri)
     const message = req.body.message
@@ -298,36 +295,48 @@ app.post('/message', async (req, res) => {
     }
 });
 
-
-app.get('/users/potentialMatches', async (req, res) => {
+// Get a sample of the latest messages from each conversation for a specific user
+app.get('/messages/sample', async (req, res) => {
     const client = new MongoClient(uri);
-    const userId = req.query.userId; // Assuming you're passing the current user's ID as a query parameter
+    const { userId } = req.query;
 
     try {
         await client.connect();
         const database = client.db('app-data');
-        const users = database.collection('users');
+        const messages = database.collection('messages');
 
-        // First, find the current user to get their matches and preferences
-        const currentUser = await users.findOne({ user_id: userId });
-        if (!currentUser) {
-            res.status(404).send('User not found');
-            return;
-        }
+        // Aggregate messages to get the latest message for each conversation involving the userId
+        const latestMessages = await messages.aggregate([
+            {
+                $match: {
+                    $or: [{ from_userId: userId }, { to_userId: userId }]
+                }
+            },
+            {
+                $sort: { timestamp: -1 }
+            },
+            {
+                $group: {
+                    _id: {
+                        $cond: [
+                            { $eq: ["$from_userId", userId] },
+                            "$to_userId",
+                            "$from_userId"
+                        ]
+                    },
+                    messageId: { $first: "$_id" },
+                    from_userId: { $first: "$from_userId" },
+                    to_userId: { $first: "$to_userId" },
+                    message: { $first: "$message" },
+                    timestamp: { $first: "$timestamp" }
+                }
+            }
+        ]).toArray();
 
-        // Assuming 'matches' field contains IDs of users that the current user has liked
-        const { matches = [] } = currentUser;
-
-        // Fetch potential matches excluding the current user and their matches
-        const potentialMatches = await users.find({
-            user_id: { $ne: userId, $nin: matches } // Exclude current user and their matches
-            // Add additional criteria here based on preferences
-        }).toArray();
-
-        res.json(potentialMatches);
+        res.json(latestMessages);
     } catch (error) {
-        console.error("Failed to fetch potential matches:", error);
-        res.status(500).send("An error occurred while fetching potential matches.");
+        console.error("Failed to fetch message samples:", error);
+        res.status(500).send("An error occurred while fetching message samples.");
     } finally {
         await client.close();
     }
