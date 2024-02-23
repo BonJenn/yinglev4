@@ -36,6 +36,13 @@
 
   }
 
+  @media (max-width: 768px) {
+    .matchesDisplay {
+      background-color: brown;
+    
+    }
+  }
+
   .imgContainer {
     display: flex;
     flex-direction: column;

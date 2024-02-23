@@ -1,6 +1,6 @@
 
 .chatHeaderContainer {
-    height: 100%;
+    height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,10 +13,13 @@
 
   @media (max-width: 768px) {
     .chatHeaderContainer {
+      height: 100px;
       margin-right: auto;
       align-items: flex-start;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
     }
-    
   }
 
   /*Profile Picture and Username in Dashboard Header */
