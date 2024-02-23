@@ -20,8 +20,10 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #f4f896;
+    background-color: var(--primary-light);
     border-radius: 30px;
+    box-shadow: 10px 10px 0 0 var(--primary-dark); /* Adjusted shadow here */
+    
   }
 
   /* Media query for screens smaller than 820px */
@@ -38,19 +40,20 @@
 }
 
 .primary-button {
-  background-color: var(--primary);
+  background-color: var(--primary-content);
   padding: 10px;
   border-radius: 10px;
   border: none;
-  color: var(--primary-content);
+  color: white;
   font-weight: bold;
   font-size: 15px;
-  transition: transform 0.2s; /* Smooth transition for transform property */
+  transition: transform 0.2s;
+  box-shadow: 4px 4px 0 0 var(--primary-dark) /* Smooth transition for transform property */
 }
 
 .primary-button:hover, .primary-button:active {
   transform: scale(1.05); /* Slightly increase size on hover and click */
-  background-color: var(--primary-dark);
+
 }
 
 .home img {
