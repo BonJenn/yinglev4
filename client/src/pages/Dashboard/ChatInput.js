@@ -1,56 +1,37 @@
-import { useState } from 'react';
-import axios from 'axios';
+import { useState } from 'react'
+import axios from 'axios'
 import styles from './ChatDisplay.module.css';
 
-const ChatInput = ({ user, clickedUser, updateChatDisplayWithNewMessage }) => {
-    const [textArea, setTextArea] = useState("");
-    const userId = user?.user_id;
-    const clickedUserId = clickedUser?.user_id;
+const ChatInput = ({user, clickedUser, getUsersMessages, getClickedUsersMessages}) => {
+    const [textArea, setTextArea] = useState("")
+    const userId = user?.user_id
+    const clickUserId = clickedUser?.user_id
 
     const addMessage = async () => {
-        const optimisticMessage = {
-            name: user?.first_name,
-            img: user?.url,
-            message: textArea,
+        const message = {
             timestamp: new Date().toISOString(),
-        };
-
-        // Optimistically update the UI
-        updateChatDisplayWithNewMessage(optimisticMessage);
+            from_userId: userId,
+            to_userId: clickUserId,
+            message: textArea
+        }
 
         try {
-            await axios.post('http://localhost:8000/message', {
-                from_userId: userId,
-                to_userId: clickedUserId,
-                message: textArea,
-                timestamp: optimisticMessage.timestamp,
-            });
-            // No need to fetch all messages again if we are optimistically updating the UI
+            await axios.post('http://localhost:8000/message', {message})
+            getUsersMessages()
+            getClickedUsersMessages()
+            setTextArea("")
+        
         } catch (error) {
-            console.log(error);
-            // Optionally handle failed message submission, e.g., by notifying the user
-        } finally {
-            setTextArea("");
+            console.log(error)
         }
-    };
+    }
 
     return (
         <div className={styles.chatInput}>
-            <textarea 
-                className={styles.textArea} 
-                value={textArea} 
-                onChange={(e) => setTextArea(e.target.value)}
-                onKeyDown={(e) => {
-                    if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        addMessage();
-                    }
-                }}
-                placeholder="Type a message..."
-            ></textarea>
+            <textarea className={styles.textArea} value={textArea} onChange={(e) => setTextArea(e.target.value)}/>
             <button className={styles.secondaryButton} onClick={addMessage}>Submit</button>
         </div>
-    );
-};
+    )
+}
 
 export default ChatInput;
