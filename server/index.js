@@ -279,19 +279,27 @@ app.get('/messages', async (req, res) => {
 })
 
 app.post('/message', async (req, res) => {
-    const client = new MongoClient(uri)
-    const message = req.body.message
-
+    const client = new MongoClient(uri);
+    const message = req.body.message;
 
     try {
-        await client.connect()
-        const database = client.db('app-data')
-        const messages = database.collection('messages')
-        const insertedMessage = await messages.insertOne(message)
-        res.send(insertedMessage);
+        await client.connect();
+        const database = client.db('app-data');
+        const messages = database.collection('messages');
+        const result = await messages.insertOne(message);
+        const savedMessage = await messages.findOne({ _id: result.insertedId });
 
+        res.status(201).json({
+            message: 'Message sent successfully',
+            data: {
+                ...savedMessage,
+                serverTimestamp: savedMessage._id.getTimestamp(), // Example of adding server-side timestamp
+            },
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to send message', error: error.message });
     } finally {
-        await client.close()
+        await client.close();
     }
 });
 
