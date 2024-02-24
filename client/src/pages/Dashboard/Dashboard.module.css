@@ -17,6 +17,8 @@
     align-items: center;
     justify-content: space-between;
     width: auto;  
+    height: auto;
+    overflow-y: auto;
   }
 
   @media (max-width: 768px) {

@@ -1,22 +1,23 @@
-const Chat = ({descendingOrderMessages}) => {
+import styles from './Chat.module.css'; // Corrected the import statement
+
+const Chat = ({ descendingOrderMessages }) => {
     return (
         <>
-        <div className="chat-display">
-            {descendingOrderMessages.map((message, _index) => (
-                <div key={_index}>
-                    <div className="chat-message-header">
-                        <div className="img-container">
-                            <img src={message.img} alt={message.first_name  + ' profile'}/> 
+            <div className={styles.chatDisplay}> {/* Updated to use module CSS */}
+                {descendingOrderMessages.map((message, index) => ( // Removed underscore from index for convention
+                    <div key={index} className={styles.messageContainer}> {/* Added a class for styling and corrected key usage */}
+                        <div className={styles.chatMessageHeader}> {/* Updated to use module CSS */}
+                            <div className={styles.imgContainer}> {/* Updated to use module CSS */}
+                                <img src={message.img} alt={`${message.first_name} profile`} className={styles.profileImg}/> {/* Updated to use module CSS */}
+                            </div>
+                            <p className={styles.chatMessage}>{message.message}</p> {/* Corrected class name and updated to use module CSS */}
                         </div>
-                        <p>{message.name}</p>
+                        <p className={styles.chatName}>{message.name}</p> {/* Updated to use module CSS */}
                     </div>
-                    <p>{message.message}</p>
-                </div>
-            ))}
-
-        </div>
+                ))}
+            </div>
         </>
-    )
+    );
 }
 
 export default Chat;

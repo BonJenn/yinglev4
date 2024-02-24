@@ -3,10 +3,13 @@
 .chatDisplay {
   padding: 20px;
   height: 60vh;
-  width: 100%;
+  width: 90%;
   overflow-y: auto;
-  background-color: white;
+  background-color: var(--primary-light);
+  
+  border-radius: 30px;
 }
+
 
 
 
