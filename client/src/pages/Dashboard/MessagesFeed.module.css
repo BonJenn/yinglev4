@@ -2,12 +2,22 @@
     display: flex;
     flex-direction: column;
     height: 500px;
-    background-color: red;
+  
+    background-color: var(--primary-light);
+    border: solid var(--primary-dark) 5px;
     border-radius: 30px;
     margin: 30px;
 }
 
 .message p {
-    color: white;
+    color: black;
     font-size: 12px;
+    margin: 10px;
+}
+
+.profilePic {
+    width: 30px; /* Adjust size as needed */
+    height: 30px; /* Adjust size as needed */
+    border-radius: 50%; /* Makes the image circular */
+    margin-right: 10px; /* Adds some space between the image and the message */
 }

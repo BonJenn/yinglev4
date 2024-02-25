@@ -31,6 +31,7 @@ const MessagesFeed = ({ user }) => {
         <div className={style.messagesFeed}>
             {messagesSample.map((message, index) => (
                 <div key={index} className={style.message}>
+                    <img src={message.profilePicUrl} alt="Profile" className={style.profilePic} />
                     <p>{message.message}</p>
                 </div>
             ))}
