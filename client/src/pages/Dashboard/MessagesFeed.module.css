@@ -9,6 +9,14 @@
     margin: 30px;
 }
 
+.message {
+    display: flex;
+    flex-direction: row;
+    overflow-y: scroll;
+    height: 100%;
+    border-bottom: solid var(--primary-dark) 1px;
+}
+
 .message p {
     color: black;
     font-size: 12px;

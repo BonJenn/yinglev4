@@ -68,7 +68,7 @@ const Home = () => {
                     <h1 className={styles.primaryTitle}>The World's Most Sought-After Singles</h1>
                     <button className={styles['primary-button']} onClick={handleClick}>
 
-                        {authToken ? 'Signout' : 'Create Account'}
+                        {authToken ? 'Signout' : 'Join Waitlist'}
                     </button>
                 </div>
 
