@@ -27,12 +27,14 @@ const MessagesFeed = ({ user }) => {
         getMessagesSample();
     }, [userId]);
 
+    messagesSample.forEach(message => console.log(message.url));
+
     return (
         <div className={style.messagesFeed}>
             {messagesSample.map((message, index) => (
                 <div key={index} className={style.message}>
                     <img 
-                        src={message.url} 
+                        src={message.profilePicUrl} 
                         alt="Profile" 
                         className={style.profilePic} 
                         onError={(e) => e.target.src = 'path/to/default/image.png'}

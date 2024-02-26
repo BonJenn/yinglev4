@@ -330,6 +330,45 @@ app.get('/messages/sample', async (req, res) => {
                     message: { $first: "$message" },
                     timestamp: { $first: "$timestamp" }
                 }
+            },
+            {
+                $lookup: {
+                    from: "users",
+                    localField: "from_userId",
+                    foreignField: "user_id",
+                    as: "from_user"
+                }
+            },
+            {
+                $lookup: {
+                    from: "users",
+                    localField: "to_userId",
+                    foreignField: "user_id",
+                    as: "to_user"
+                }
+            },
+            {
+                $unwind: "$from_user"
+            },
+            {
+                $unwind: "$to_user"
+            },
+            {
+                $addFields: {
+                    "profilePicUrl": {
+                        $cond: [
+                            { $eq: ["$from_userId", userId] },
+                            "$to_user.url",
+                            "$from_user.url"
+                        ]
+                    }
+                }
+            },
+            {
+                $project: {
+                    "from_user": 0, // Exclude the from_user object to reduce response size
+                    "to_user": 0 // Exclude the to_user object to reduce response size
+                }
             }
         ]).toArray();
 
