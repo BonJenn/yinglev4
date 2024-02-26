@@ -1,14 +1,17 @@
 import ChatHeader from './ChatHeader'
 import MatchesDisplay from './MatchesDisplay'
 import ChatDisplay from './ChatDisplay'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './ChatContainer.module.css'
 
-const ChatContainer = ({user}) => {
+const ChatContainer = ({user, selectedUserId}) => {
     const [ clickedUser, setClickedUser ] = useState(null)
 
-
-  
+    useEffect(() => {
+        if (selectedUserId) {
+            setClickedUser(selectedUserId);
+        }
+    }, [selectedUserId]);
 
     return (
         <>
