@@ -13,7 +13,8 @@ const Dashboard = () => {
     const [lastDirection, setLastDirection] = useState()
     const [ cookies, setCookie, removeCookie ] = useCookies(['user'])
     const [shuffledUsers, setShuffledUsers] = useState([]);
-
+    const [view, setView] = useState('feed'); // 'feed' or 'conversation'
+    const [selectedUserId, setSelectedUserId] = useState(null);
 
     const userId = cookies['UserId']
 
@@ -105,6 +106,11 @@ const Dashboard = () => {
             return array;
         }
 
+        const handleUserClick = (userId) => {
+          setSelectedUserId(userId);
+          setView('conversation');
+        };
+
         
       
         return (
@@ -114,7 +120,8 @@ const Dashboard = () => {
               {/*Dashboard Left Side */}
               <div className={styles.dashboardLeftSide}>
                 <ChatContainer user={user} />
-                {user && <MessagesFeed user={user} />}
+                {view === 'feed' && <MessagesFeed user={user} handleUserClick={handleUserClick} />}
+                {view === 'conversation' && <ChatContainer user={user} selectedUserId={selectedUserId} />}
 
               </div>
 
