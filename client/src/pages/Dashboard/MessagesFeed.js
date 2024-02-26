@@ -31,7 +31,12 @@ const MessagesFeed = ({ user }) => {
         <div className={style.messagesFeed}>
             {messagesSample.map((message, index) => (
                 <div key={index} className={style.message}>
-                    <img src={message.profilePicUrl} alt="Profile" className={style.profilePic} />
+                    <img 
+                        src={message.url} 
+                        alt="Profile" 
+                        className={style.profilePic} 
+                        onError={(e) => e.target.src = 'path/to/default/image.png'}
+                    />
                     <p>{message.message}</p>
                 </div>
             ))}

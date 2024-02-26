@@ -59,6 +59,7 @@ const ChatDisplay = ({ user, clickedUser }) => {
         formattedMessage['img'] = user?.url
         formattedMessage['message'] = message.message
         formattedMessage['timestamp'] = message.timestamp
+        formattedMessage['profilePicUrl'] = user?.profilePicUrl // Add this line
         messages.push(formattedMessage)
     })
 
@@ -69,6 +70,7 @@ const ChatDisplay = ({ user, clickedUser }) => {
         formattedMessage['img'] = clickedUser?.url
         formattedMessage['message'] = message.message
         formattedMessage['timestamp'] = message.timestamp
+        formattedMessage['profilePicUrl'] = clickedUser?.profilePicUrl // Add this line
         messages.push(formattedMessage)
     })
 
