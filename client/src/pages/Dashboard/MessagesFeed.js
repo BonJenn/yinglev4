@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import style from './MessagesFeed.module.css';
 
-const MessagesFeed = ({ user, handleUserClick }) => {
+const MessagesFeed = ({ user }) => {
     const userId = user?.user_id
 
     const [messagesSample, setMessagesSample] = useState([]);
@@ -32,7 +32,7 @@ const MessagesFeed = ({ user, handleUserClick }) => {
     return (
         <div className={style.messagesFeed}>
             {messagesSample.map((message, index) => (
-                <div key={index} className={style.message} onClick={() => handleUserClick(message.from_userId === user.user_id ? message.to_userId : message.from_userId)}>
+                <div key={index} className={style.message}>
                     <img 
                         src={message.profilePicUrl} 
                         alt="Profile" 
