@@ -29,6 +29,8 @@ const MessagesFeed = ({ user, setClickedUser }) => {
 
     messagesSample.forEach(message => console.log(message.url));
 
+
+
     return (
         <div className={style.messagesFeed}>
             {messagesSample.map((message, index) => (

@@ -49,6 +49,8 @@ const ChatDisplay = ({ user, clickedUser }) => {
 
     console.log(usersMessages)
 
+    
+
     const messages = []
 
     console.log('usersMessages', usersMessages)
