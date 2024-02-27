@@ -3,6 +3,7 @@ import TinderCard from 'react-tinder-card';
 import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie'
 import MessagesFeed from './MessagesFeed'; // Corrected import statement for MessagesFeed
+import ChatDisplay from './ChatDisplay';
 import ChatContainer from './ChatContainer'
 import axios from 'axios'
 import styles from './Dashboard.module.css'; // Step 2: Import the CSS module
@@ -13,6 +14,7 @@ const Dashboard = () => {
     const [lastDirection, setLastDirection] = useState()
     const [ cookies, setCookie, removeCookie ] = useCookies(['user'])
     const [shuffledUsers, setShuffledUsers] = useState([]);
+    const [clickedUser, setClickedUser] = useState(null);
 
 
     const userId = cookies['UserId']
@@ -114,7 +116,8 @@ const Dashboard = () => {
               {/*Dashboard Left Side */}
               <div className={styles.dashboardLeftSide}>
                 <ChatContainer user={user} />
-                {user && <MessagesFeed user={user} />}
+                {!clickedUser && <MessagesFeed user={user} setClickedUser={setClickedUser} />}
+                {clickedUser && <ChatDisplay user={user} clickedUser={clickedUser} />}
 
               </div>
 
@@ -155,4 +158,5 @@ const Dashboard = () => {
 
 
 export default Dashboard;
+
 
